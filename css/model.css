@@ -199,3 +199,10 @@
   .mp-table th, .mp-table td { padding: 10px 12px; }
 }
 @media (prefers-reduced-motion: reduce) { .is-flash { animation: none; } }
+
+/* three menu links: on small phones the logo keeps only its mark */
+@media (max-width: 420px) {
+  .mp-page .logo { gap: 0; font-size: 0; }
+  .mp-page .header__row { gap: 8px; }
+}
+@media (max-width: 559px) { .mp-nav a[href$="calculator.html"] { display: none; } }

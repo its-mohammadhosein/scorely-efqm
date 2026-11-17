@@ -223,3 +223,9 @@
 
 /* the Persian typeface spaces tabular digits widely; use its normal figures */
 [lang="fa"] .as-summary__pct, [lang="fa"] .as-total b, [lang="fa"] .as-attr output { font-variant-numeric: normal; }
+
+/* three menu links: on small phones the logo keeps only its mark */
+@media (max-width: 420px) {
+  .as-page .logo { gap: 0; font-size: 0; }
+  .as-page .header__row { gap: 8px; }
+}
