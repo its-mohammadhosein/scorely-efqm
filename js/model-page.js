@@ -3,22 +3,11 @@
 // weights, assessment logic, scoring matrices, the concept × criteria map and the glossary.
 (() => {
   const M = window.IMI_1404;
-  const { t, num, esc, FA, LANG } = window.I18N;
+  const { t, num, esc, FA, LANG, itemId: fmtId } = window.I18N;
   const root = document.getElementById('mp-root');
   if (!M || !root) return;
 
   const L = (en, fa) => (FA ? fa : en);
-  const FA_DIGITS = '۰۱۲۳۴۵۶۷۸۹';
-  const digits = s => (FA ? String(s).replace(/\d/g, d => FA_DIGITS[d]) : String(s));
-  const PART_FA = { A: 'الف', B: 'ب', C: 'ج' };
-  // "7-1A" → "7-1 A" / "۷-۱ الف". In Persian the id starts with an Arabic Letter Mark
-  // (U+061C) so it always reads right to left like the source (criterion number on the
-  // right); without it the browser's ordering depends on the text around the id.
-  const fmtId = id => {
-    const m = String(id).match(/^(\d-\d)([ABC])?$/);
-    if (!m) return digits(id);
-    return (FA ? '؜' : '') + digits(m[1]) + (m[2] ? ' ' + (FA ? PART_FA[m[2]] : m[2]) : '');
-  };
   const anchor = id => `i-${id}`;
   const items = Engine.items(M);
   const itemById = Object.fromEntries(items.map(i => [i.id, i]));
