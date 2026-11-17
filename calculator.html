@@ -17,6 +17,7 @@
       <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
       <symbol id="i-print" viewBox="0 0 24 24"><path d="M7 9V3h10v6M7 17H4v-7h16v7h-3"/><path d="M7 14h10v7H7Z"/></symbol>
       <symbol id="i-reset" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.5-5.8L4 8.5"/><path d="M4 3.5v5h5"/></symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
     </defs>
   </svg>
 
@@ -28,7 +29,7 @@
       </a>
       <div class="header__cta">
         <a class="lang" href="fa/calculator.html" lang="fa" hreflang="fa">فا</a>
-        <a class="btn btn--ghost btn--sm" href="index.html">Back to home</a>
+        <a class="btn btn--ghost btn--sm" href="index.html">Home</a>
       </div>
     </div>
   </header>
@@ -46,6 +47,24 @@
           <li><b>75</b>Clear</li>
           <li><b>100</b>Comprehensive</li>
         </ul>
+        <div class="cp-plan" aria-label="Preview by plan">
+          <p class="cp-plan__l">See what each plan adds, right here</p>
+          <div class="cp-plan__seg" role="radiogroup" aria-label="Plan">
+            <label><input type="radio" name="plan" value="starter"><span><b>Starter</b><small>Free</small></span></label>
+            <label><input type="radio" name="plan" value="team"><span><b>Team</b><small>$49 / month</small></span></label>
+            <label><input type="radio" name="plan" value="enterprise"><span><b>Enterprise</b><small>Custom</small></span></label>
+          </div>
+          <p class="cp-plan__d" id="cp-plan-desc"></p>
+        </div>
+        <div class="cp-units need-ent">
+          <span class="cp-units__l">Unit being assessed</span>
+          <div class="cp-units__list" id="cp-units"></div>
+          <span class="cp-units__tools">
+            <button type="button" class="cp-units__btn" id="cp-unit-add">+ New unit</button>
+            <button type="button" class="cp-units__btn" id="cp-unit-rename">Rename</button>
+            <button type="button" class="cp-units__btn" id="cp-unit-del">Delete</button>
+          </span>
+        </div>
       </div>
     </section>
 
@@ -76,6 +95,7 @@
             <li><span>Results</span><b id="cp-d2">0</b><small>/400</small></li>
           </ul>
 
+          <div class="cp-full need-team">
           <ul class="cp-crit" id="cp-crit"></ul>
 
           <div class="cp-gaps">
@@ -83,8 +103,27 @@
             <ol id="cp-gaps"></ol>
           </div>
 
+          </div>
+
+          <div class="cp-lock lock-team">
+            <p><svg class="i"><use href="#i-lock"/></svg><b>In the Team plan</b></p>
+            <p>Breakdown by criterion, your biggest gaps, evidence notes on every question, and PDF export.</p>
+            <button type="button" class="cp-lock__btn" data-go="team">Preview Team</button>
+          </div>
+
+          <div class="cp-compare need-ent">
+            <p class="cp-gaps__t">Units compared</p>
+            <ul id="cp-compare"></ul>
+          </div>
+
+          <div class="cp-lock lock-ent">
+            <p><svg class="i"><use href="#i-lock"/></svg><b>In the Enterprise plan</b></p>
+            <p>Assess each unit or site separately and see their scores side by side.</p>
+            <button type="button" class="cp-lock__btn" data-go="enterprise">Preview Enterprise</button>
+          </div>
+
           <div class="cp-actions">
-            <button class="btn btn--lime" type="button" id="cp-print"><svg class="i"><use href="#i-print"/></svg>Print or save as PDF</button>
+            <button class="btn btn--lime need-team" type="button" id="cp-print"><svg class="i"><use href="#i-print"/></svg>Print or save as PDF</button>
             <button class="btn cp-reset" type="button" id="cp-reset"><svg class="i"><use href="#i-reset"/></svg>Start over</button>
           </div>
           <p class="calc__fine">A rough self-assessment, not an official EFQM score.</p>

@@ -362,6 +362,10 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .price ul { display: grid; gap: 0; margin-top: 8px; }
 .price li { display: flex; align-items: center; gap: 10px; padding: 11px 0; border-top: 1px solid var(--line); font-size: 0.92rem; }
 .price li .i { width: 16px; height: 16px; color: var(--green); }
+.price__try { margin-top: -6px; font-size: 0.85rem; color: var(--muted); text-align: center; text-decoration: underline; text-decoration-color: rgb(20 22 20 / .2); text-underline-offset: 4px; }
+.price__try:hover { color: var(--green); }
+.price--pick .price__try { color: #c4d8ca; text-decoration-color: rgb(255 255 255 / .3); }
+.price--pick .price__try:hover { color: var(--lime); }
 .price--pick { background: var(--green); color: #fff; box-shadow: 0 30px 60px -30px rgb(31 107 74 / .7); }
 .price--pick .price__desc, .price--pick .price__amt span { color: #c4d8ca; }
 .price--pick li { border-color: rgb(255 255 255 / .14); }

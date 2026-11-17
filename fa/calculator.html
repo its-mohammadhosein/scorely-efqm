@@ -18,6 +18,7 @@
       <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
       <symbol id="i-print" viewBox="0 0 24 24"><path d="M7 9V3h10v6M7 17H4v-7h16v7h-3"/><path d="M7 14h10v7H7Z"/></symbol>
       <symbol id="i-reset" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.5-5.8L4 8.5"/><path d="M4 3.5v5h5"/></symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
     </defs>
   </svg>
 
@@ -29,7 +30,7 @@
       </a>
       <div class="header__cta">
         <a class="lang" href="../calculator.html" lang="en" hreflang="en">EN</a>
-        <a class="btn btn--ghost btn--sm" href="index.html">بازگشت به صفحهٔ اصلی</a>
+        <a class="btn btn--ghost btn--sm" href="index.html">صفحهٔ اصلی</a>
       </div>
     </div>
   </header>
@@ -47,6 +48,24 @@
           <li><b>۷۵</b>روشن</li>
           <li><b>۱۰۰</b>جامع</li>
         </ul>
+        <div class="cp-plan" aria-label="نمایش بر اساس پلن">
+          <p class="cp-plan__l">امکانات هر پلن را همین‌جا ببینید</p>
+          <div class="cp-plan__seg" role="radiogroup" aria-label="پلن">
+            <label><input type="radio" name="plan" value="starter"><span><b>پایه</b><small>رایگان</small></span></label>
+            <label><input type="radio" name="plan" value="team"><span><b>تیمی</b><small>۲٫۵ میلیون / ماه</small></span></label>
+            <label><input type="radio" name="plan" value="enterprise"><span><b>سازمانی</b><small>سفارشی</small></span></label>
+          </div>
+          <p class="cp-plan__d" id="cp-plan-desc"></p>
+        </div>
+        <div class="cp-units need-ent">
+          <span class="cp-units__l">واحد در حال ارزیابی</span>
+          <div class="cp-units__list" id="cp-units"></div>
+          <span class="cp-units__tools">
+            <button type="button" class="cp-units__btn" id="cp-unit-add">+ واحد جدید</button>
+            <button type="button" class="cp-units__btn" id="cp-unit-rename">تغییر نام</button>
+            <button type="button" class="cp-units__btn" id="cp-unit-del">حذف</button>
+          </span>
+        </div>
       </div>
     </section>
 
@@ -77,6 +96,7 @@
             <li><span>نتایج</span><b id="cp-d2">۰</b><small>/۴۰۰</small></li>
           </ul>
 
+          <div class="cp-full need-team">
           <ul class="cp-crit" id="cp-crit"></ul>
 
           <div class="cp-gaps">
@@ -84,8 +104,27 @@
             <ol id="cp-gaps"></ol>
           </div>
 
+          </div>
+
+          <div class="cp-lock lock-team">
+            <p><svg class="i"><use href="#i-lock"/></svg><b>در پلن تیمی</b></p>
+            <p>تفکیک هر معیار، بیشترین فرصت‌های بهبود، یادداشت شواهد برای هر پرسش و خروجی PDF.</p>
+            <button type="button" class="cp-lock__btn" data-go="team">نمایش پلن تیمی</button>
+          </div>
+
+          <div class="cp-compare need-ent">
+            <p class="cp-gaps__t">مقایسهٔ واحدها</p>
+            <ul id="cp-compare"></ul>
+          </div>
+
+          <div class="cp-lock lock-ent">
+            <p><svg class="i"><use href="#i-lock"/></svg><b>در پلن سازمانی</b></p>
+            <p>هر واحد یا سایت را جداگانه ارزیابی کنید و امتیازها را کنار هم ببینید.</p>
+            <button type="button" class="cp-lock__btn" data-go="enterprise">نمایش پلن سازمانی</button>
+          </div>
+
           <div class="cp-actions">
-            <button class="btn btn--lime" type="button" id="cp-print"><svg class="i"><use href="#i-print"/></svg>چاپ یا ذخیرهٔ PDF</button>
+            <button class="btn btn--lime need-team" type="button" id="cp-print"><svg class="i"><use href="#i-print"/></svg>چاپ یا ذخیرهٔ PDF</button>
             <button class="btn cp-reset" type="button" id="cp-reset"><svg class="i"><use href="#i-reset"/></svg>شروع دوباره</button>
           </div>
           <p class="calc__fine">این یک خودارزیابی تقریبی است، نه امتیاز رسمی EFQM.</p>
