@@ -69,7 +69,7 @@
       <!-- Product preview -->
       <div class="container">
         <div class="stage reveal">
-          <div class="app" aria-label="پیش‌نمایش داشبورد اسکورلی" role="img">
+          <div class="app" aria-label="پیش‌نمایش تعاملی داشبورد اسکورلی">
             <div class="app__bar">
               <span class="dots"><i></i><i></i><i></i></span>
               <span class="app__url" dir="ltr">app.scorely.io/assessment/1405</span>
@@ -79,14 +79,15 @@
                 <p class="app__kicker">خودارزیابی سالانه — ۱۴۰۵</p>
                 <p class="app__title">نمای کلی</p>
               </div>
-              <div class="seg"><span class="on">امتیاز</span><span>شواهد</span><span>برنامه</span></div>
+              <div class="seg" role="tablist"><button type="button" role="tab" data-view-btn="score" aria-selected="true">امتیاز</button><button type="button" role="tab" data-view-btn="evidence" aria-selected="false">شواهد</button><button type="button" role="tab" data-view-btn="plan" aria-selected="false">برنامه</button></div>
             </div>
 
+            <!-- Score -->
+            <div class="app__view is-on" data-view="score" role="tabpanel">
             <div class="app__grid">
-              <!-- Total score -->
               <div class="card card--score">
                 <div class="card__top"><span>امتیاز کل</span><span class="chip chip--up">۷۴+ نسبت به ۱۴۰۴</span></div>
-                <div class="gauge" data-value="612" data-max="1000">
+                <div class="gauge" data-value="612" data-max="1000" tabindex="0" data-tip="۷۴ امتیاز بیشتر از ۵۳۸ در سال ۱۴۰۴">
                   <svg viewBox="0 0 200 200" aria-hidden="true">
                     <defs><linearGradient id="g-arc" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#1f6b4a"/><stop offset=".7" stop-color="#5aa36b"/><stop offset="1" stop-color="#c7ef6b"/></linearGradient></defs>
                     <circle class="gauge__track" cx="100" cy="100" r="80"/>
@@ -95,40 +96,81 @@
                   <div class="gauge__num"><strong data-count="612">۶۱۲</strong><span>از ۱٬۰۰۰</span></div>
                 </div>
                 <ul class="dims">
-                  <li><span>جهت‌گیری</span><b>۱۲۸<small>/۲۰۰</small></b></li>
-                  <li><span>اجرا</span><b>۲۳۶<small>/۴۰۰</small></b></li>
-                  <li><span>نتایج</span><b>۲۴۸<small>/۴۰۰</small></b></li>
+                  <li data-dim="0" tabindex="0" data-tip="معیارهای ۱ و ۲"><span>جهت‌گیری</span><b>۱۲۸<small>/۲۰۰</small></b></li>
+                  <li data-dim="1" tabindex="0" data-tip="معیارهای ۳ تا ۵"><span>اجرا</span><b>۲۳۶<small>/۴۰۰</small></b></li>
+                  <li data-dim="2" tabindex="0" data-tip="معیارهای ۶ و ۷"><span>نتایج</span><b>۲۴۸<small>/۴۰۰</small></b></li>
                 </ul>
               </div>
 
-              <!-- Criteria -->
               <div class="card card--criteria">
-                <div class="card__top"><span>به تفکیک معیار</span><span class="muted">درصد از امتیاز ممکن</span></div>
+                <div class="card__top"><span>به تفکیک معیار</span><label class="switch"><input type="checkbox" id="cmp-prev"><i aria-hidden="true"></i>مقایسه با ۱۴۰۴</label></div>
                 <ul class="bars">
-                  <li style="--v:66"><span class="bars__n">۱</span><span class="bars__l">هدف، چشم‌انداز و استراتژی</span><span class="bars__t"><i></i></span><b>۶۶٪</b></li>
-                  <li style="--v:62"><span class="bars__n">۲</span><span class="bars__l">فرهنگ سازمانی و رهبری</span><span class="bars__t"><i></i></span><b>۶۲٪</b></li>
-                  <li style="--v:58"><span class="bars__n">۳</span><span class="bars__l">درگیر کردن ذی‌نفعان</span><span class="bars__t"><i></i></span><b>۵۸٪</b></li>
-                  <li style="--v:59"><span class="bars__n">۴</span><span class="bars__l">خلق ارزش پایدار</span><span class="bars__t"><i></i></span><b>۵۹٪</b></li>
-                  <li style="--v:60" class="is-low"><span class="bars__n">۵</span><span class="bars__l">هدایت عملکرد و تحول</span><span class="bars__t"><i></i></span><b>۶۰٪</b></li>
-                  <li style="--v:64"><span class="bars__n">۶</span><span class="bars__l">ادراکات ذی‌نفعان</span><span class="bars__t"><i></i></span><b>۶۴٪</b></li>
-                  <li style="--v:60"><span class="bars__n">۷</span><span class="bars__l">عملکرد استراتژیک و عملیاتی</span><span class="bars__t"><i></i></span><b>۶۰٪</b></li>
+                  <li style="--v:66;--p:60" data-dim="0" tabindex="0" data-tip="معیار ۱: ۶۶ از ۱۰۰ امتیاز — ۶+ نسبت به ۱۴۰۴"><span class="bars__n">۱</span><span class="bars__l">هدف، چشم‌انداز و استراتژی</span><span class="bars__t"><i></i></span><b>۶۶٪<em>۶+</em></b></li>
+                  <li style="--v:62;--p:58" data-dim="0" tabindex="0" data-tip="معیار ۲: ۶۲ از ۱۰۰ امتیاز — ۴+ نسبت به ۱۴۰۴"><span class="bars__n">۲</span><span class="bars__l">فرهنگ سازمانی و رهبری</span><span class="bars__t"><i></i></span><b>۶۲٪<em>۴+</em></b></li>
+                  <li style="--v:58;--p:49" data-dim="1" tabindex="0" data-tip="معیار ۳: ۵۸ از ۱۰۰ امتیاز — ۹+ نسبت به ۱۴۰۴"><span class="bars__n">۳</span><span class="bars__l">درگیر کردن ذی‌نفعان</span><span class="bars__t"><i></i></span><b>۵۸٪<em>۹+</em></b></li>
+                  <li style="--v:59;--p:52" data-dim="1" tabindex="0" data-tip="معیار ۴: ۱۱۸ از ۲۰۰ امتیاز — ۱۴+ نسبت به ۱۴۰۴"><span class="bars__n">۴</span><span class="bars__l">خلق ارزش پایدار</span><span class="bars__t"><i></i></span><b>۵۹٪<em>۷+</em></b></li>
+                  <li class="is-low" style="--v:60;--p:57" data-dim="1" tabindex="0" data-tip="معیار ۵: ۶۰ از ۱۰۰ امتیاز — ۳+ نسبت به ۱۴۰۴"><span class="bars__n">۵</span><span class="bars__l">هدایت عملکرد و تحول</span><span class="bars__t"><i></i></span><b>۶۰٪<em>۳+</em></b></li>
+                  <li style="--v:64;--p:55" data-dim="2" tabindex="0" data-tip="معیار ۶: ۱۲۸ از ۲۰۰ امتیاز — ۱۸+ نسبت به ۱۴۰۴"><span class="bars__n">۶</span><span class="bars__l">ادراکات ذی‌نفعان</span><span class="bars__t"><i></i></span><b>۶۴٪<em>۹+</em></b></li>
+                  <li style="--v:60;--p:50" data-dim="2" tabindex="0" data-tip="معیار ۷: ۱۲۰ از ۲۰۰ امتیاز — ۲۰+ نسبت به ۱۴۰۴"><span class="bars__n">۷</span><span class="bars__l">عملکرد استراتژیک و عملیاتی</span><span class="bars__t"><i></i></span><b>۶۰٪<em>۱۰+</em></b></li>
                 </ul>
               </div>
 
-              <!-- Side column -->
               <div class="app__side">
                 <div class="card card--dark">
-                  <div class="card__top"><span>بزرگ‌ترین شکاف</span><svg class="i"><use href="#i-arrow-ur"/></svg></div>
+                  <div class="card__top"><span>بزرگ‌ترین شکاف</span><button type="button" class="gap__go" data-goto="plan" data-focus="act-1" aria-label="باز کردن برنامهٔ معیار ۵" data-tip="باز کردن برنامهٔ معیار ۵"><svg class="i"><use href="#i-arrow-ur"/></svg></button></div>
                   <p class="gap__title">معیار ۵</p>
                   <p class="gap__text">۳ رویکرد هیچ شاهدی از بازنگری و پالایش ندارند.</p>
                   <span class="chip chip--lime">تا ۳۸ امتیاز قابل کسب</span>
                 </div>
                 <div class="card">
                   <div class="card__top"><span>ارزیابان</span><span class="muted">۸ نفر از ۱۱ نفر تمام کرده‌اند</span></div>
-                  <div class="team">
-                    <span class="av" style="--h:150">ن</span><span class="av" style="--h:30">س</span><span class="av" style="--h:210">ع</span><span class="av" style="--h:330">ل</span><span class="av av--more">۷+</span>
-                  </div>
+                  <div class="team"><span class="av" style="--h:150" tabindex="0" data-tip="نرگس رضایی — تمام کرده">ن</span><span class="av" style="--h:30" tabindex="0" data-tip="سارا کاظمی — تمام کرده">س</span><span class="av" style="--h:210" tabindex="0" data-tip="علی مرادی — در حال امتیازدهی">ع</span><span class="av" style="--h:330" tabindex="0" data-tip="لیلا بهرامی — هنوز شروع نکرده">ل</span><span class="av av--more" tabindex="0" data-tip="۷ ارزیاب دیگر">۷+</span></div>
                   <span class="prog"><i style="width:73%"></i></span>
+                </div>
+              </div>
+            </div>
+            </div>
+
+            <!-- Evidence -->
+            <div class="app__view" data-view="evidence" role="tabpanel">
+              <div class="app__pad">
+                <div class="card">
+                  <div class="ev__head">
+                    <div><p class="ev__title">شواهد</p><p class="muted ev__sub">۴۶ فایل پیوست‌شده — فایل اصلی هر معیار</p></div>
+                    <div class="filters"><button type="button" data-filter="all" aria-pressed="true">همه <span>۷</span></button><button type="button" data-filter="review" aria-pressed="false">در حال بررسی <span>۲</span></button><button type="button" data-filter="missing" aria-pressed="false">ناقص <span>۱</span></button></div>
+                  </div>
+                  <ul class="ev__list">
+                    <li data-status="ok"><span class="bars__n">۱</span><span class="ev__name">سند استراتژی ۱۴۰۵ تا ۱۴۰۷<small>PDF، نرگس رضایی</small></span><span class="st st--ok">تأییدشده</span></li>
+                    <li data-status="ok"><span class="bars__n">۲</span><span class="ev__name">نتایج نظرسنجی رهبری<small>اکسل، سارا کاظمی</small></span><span class="st st--ok">تأییدشده</span></li>
+                    <li data-status="review"><span class="bars__n">۳</span><span class="ev__name">نقشهٔ ذی‌نفعان<small>PDF، علی مرادی</small></span><span class="st st--review">در حال بررسی</span></li>
+                    <li data-status="ok"><span class="bars__n">۴</span><span class="ev__name">فرایند طراحی خدمت<small>ورد، سارا کاظمی</small></span><span class="st st--ok">تأییدشده</span></li>
+                    <li data-status="missing"><span class="bars__n">۵</span><span class="ev__name">گزارش بازنگری فرایندها<small>بارگذاری نشده، لیلا بهرامی</small></span><span class="st st--missing">ناقص</span></li>
+                    <li data-status="review"><span class="bars__n">۶</span><span class="ev__name">نظرسنجی مشتریان ۱۴۰۵<small>اکسل، علی مرادی</small></span><span class="st st--review">در حال بررسی</span></li>
+                    <li data-status="ok"><span class="bars__n">۷</span><span class="ev__name">داشبورد شاخص‌های فصل سوم<small>لینک، نرگس رضایی</small></span><span class="st st--ok">تأییدشده</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Plan -->
+            <div class="app__view" data-view="plan" role="tabpanel">
+              <div class="app__pad">
+                <div class="card">
+                  <div class="ev__head">
+                    <p class="ev__title">برنامهٔ بهبود</p>
+                    <div class="pstats">
+                      <span class="pstat"><small>تا ۸۶ امتیاز قابل کسب</small><b id="plan-done" data-tpl="{d} از {t} انجام شد" data-total="6">۰ از ۶ انجام شد</b></span>
+                      <span class="pstat pstat--green"><small>امتیاز با اقدام‌های انجام‌شده</small><b id="plan-proj" data-base="612">۶۱۲</b></span>
+                    </div>
+                  </div>
+                  <ul class="acts">
+                    <li id="act-1"><label class="act"><input type="checkbox" data-pts="18"><span class="act__box" aria-hidden="true"></span><span class="act__t">افزودن بازنگری فصلی به ۳ فرایند کلیدی<small>معیار ۵، سارا ک.، ۲۹ آذر</small></span><b>۱۸+</b></label></li>
+                    <li id="act-2"><label class="act"><input type="checkbox" data-pts="20"><span class="act__box" aria-hidden="true"></span><span class="act__t">الگوبرداری شاخص‌های تحویل از ۲ رقیب<small>معیار ۵، لیلا ب.، ۲۵ دی</small></span><b>۲۰+</b></label></li>
+                    <li id="act-3"><label class="act"><input type="checkbox" data-pts="12"><span class="act__box" aria-hidden="true"></span><span class="act__t">اجرای نظرسنجی مشارکت تأمین‌کنندگان<small>معیار ۳، علی م.، ۱۰ بهمن</small></span><b>۱۲+</b></label></li>
+                    <li id="act-4"><label class="act"><input type="checkbox" data-pts="16"><span class="act__box" aria-hidden="true"></span><span class="act__t">تعیین هدف سه‌ساله برای شاخص‌های عملیاتی<small>معیار ۷، نرگس ر.، ۲۱ بهمن</small></span><b>۱۶+</b></label></li>
+                    <li id="act-5"><label class="act"><input type="checkbox" data-pts="10"><span class="act__box" aria-hidden="true"></span><span class="act__t">مستندسازی فرایند طراحی خدمت<small>معیار ۴، سارا ک.، ۹ اسفند</small></span><b>۱۰+</b></label></li>
+                    <li id="act-6"><label class="act"><input type="checkbox" data-pts="10"><span class="act__box" aria-hidden="true"></span><span class="act__t">تفکیک نظرسنجی مشتری بر اساس منطقه<small>معیار ۶، علی م.، ۱۴ اسفند</small></span><b>۱۰+</b></label></li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -440,5 +482,6 @@
   </footer>
 
   <script src="../js/main.js"></script>
+  <script src="../js/preview.js"></script>
 </body>
 </html>

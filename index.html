@@ -68,24 +68,25 @@
       <!-- Product preview -->
       <div class="container">
         <div class="stage reveal">
-          <div class="app" aria-label="Scorely dashboard preview" role="img">
+          <div class="app" aria-label="Interactive preview of the Scorely dashboard">
             <div class="app__bar">
               <span class="dots"><i></i><i></i><i></i></span>
-              <span class="app__url">app.scorely.io/assessment/2026</span>
+              <span class="app__url" dir="ltr">app.scorely.io/assessment/2026</span>
             </div>
             <div class="app__head">
               <div>
                 <p class="app__kicker">Annual self-assessment · 2026</p>
                 <p class="app__title">Overview</p>
               </div>
-              <div class="seg"><span class="on">Score</span><span>Evidence</span><span>Plan</span></div>
+              <div class="seg" role="tablist"><button type="button" role="tab" data-view-btn="score" aria-selected="true">Score</button><button type="button" role="tab" data-view-btn="evidence" aria-selected="false">Evidence</button><button type="button" role="tab" data-view-btn="plan" aria-selected="false">Plan</button></div>
             </div>
 
+            <!-- Score -->
+            <div class="app__view is-on" data-view="score" role="tabpanel">
             <div class="app__grid">
-              <!-- Total score -->
               <div class="card card--score">
                 <div class="card__top"><span>Total score</span><span class="chip chip--up">+74 vs 2025</span></div>
-                <div class="gauge" data-value="612" data-max="1000">
+                <div class="gauge" data-value="612" data-max="1000" tabindex="0" data-tip="Up 74 points from 538 in 2025">
                   <svg viewBox="0 0 200 200" aria-hidden="true">
                     <defs><linearGradient id="g-arc" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#1f6b4a"/><stop offset=".7" stop-color="#5aa36b"/><stop offset="1" stop-color="#c7ef6b"/></linearGradient></defs>
                     <circle class="gauge__track" cx="100" cy="100" r="80"/>
@@ -94,40 +95,81 @@
                   <div class="gauge__num"><strong data-count="612">612</strong><span>of 1,000</span></div>
                 </div>
                 <ul class="dims">
-                  <li><span>Direction</span><b>128<small>/200</small></b></li>
-                  <li><span>Execution</span><b>236<small>/400</small></b></li>
-                  <li><span>Results</span><b>248<small>/400</small></b></li>
+                  <li data-dim="0" tabindex="0" data-tip="Criteria 1–2"><span>Direction</span><b>128<small>/200</small></b></li>
+                  <li data-dim="1" tabindex="0" data-tip="Criteria 3–5"><span>Execution</span><b>236<small>/400</small></b></li>
+                  <li data-dim="2" tabindex="0" data-tip="Criteria 6–7"><span>Results</span><b>248<small>/400</small></b></li>
                 </ul>
               </div>
 
-              <!-- Criteria -->
               <div class="card card--criteria">
-                <div class="card__top"><span>By criterion</span><span class="muted">% of available points</span></div>
+                <div class="card__top"><span>By criterion</span><label class="switch"><input type="checkbox" id="cmp-prev"><i aria-hidden="true"></i>vs 2025</label></div>
                 <ul class="bars">
-                  <li style="--v:66"><span class="bars__n">1</span><span class="bars__l">Purpose, vision &amp; strategy</span><span class="bars__t"><i></i></span><b>66%</b></li>
-                  <li style="--v:62"><span class="bars__n">2</span><span class="bars__l">Culture &amp; leadership</span><span class="bars__t"><i></i></span><b>62%</b></li>
-                  <li style="--v:58"><span class="bars__n">3</span><span class="bars__l">Engaging stakeholders</span><span class="bars__t"><i></i></span><b>58%</b></li>
-                  <li style="--v:59"><span class="bars__n">4</span><span class="bars__l">Creating sustainable value</span><span class="bars__t"><i></i></span><b>59%</b></li>
-                  <li style="--v:60" class="is-low"><span class="bars__n">5</span><span class="bars__l">Performance &amp; transformation</span><span class="bars__t"><i></i></span><b>60%</b></li>
-                  <li style="--v:64"><span class="bars__n">6</span><span class="bars__l">Stakeholder perceptions</span><span class="bars__t"><i></i></span><b>64%</b></li>
-                  <li style="--v:60"><span class="bars__n">7</span><span class="bars__l">Strategic &amp; operational performance</span><span class="bars__t"><i></i></span><b>60%</b></li>
+                  <li style="--v:66;--p:60" data-dim="0" tabindex="0" data-tip="Criterion 1: 66 of 100 pts · +6 vs 2025"><span class="bars__n">1</span><span class="bars__l">Purpose, vision &amp; strategy</span><span class="bars__t"><i></i></span><b>66%<em>+6</em></b></li>
+                  <li style="--v:62;--p:58" data-dim="0" tabindex="0" data-tip="Criterion 2: 62 of 100 pts · +4 vs 2025"><span class="bars__n">2</span><span class="bars__l">Culture &amp; leadership</span><span class="bars__t"><i></i></span><b>62%<em>+4</em></b></li>
+                  <li style="--v:58;--p:49" data-dim="1" tabindex="0" data-tip="Criterion 3: 58 of 100 pts · +9 vs 2025"><span class="bars__n">3</span><span class="bars__l">Engaging stakeholders</span><span class="bars__t"><i></i></span><b>58%<em>+9</em></b></li>
+                  <li style="--v:59;--p:52" data-dim="1" tabindex="0" data-tip="Criterion 4: 118 of 200 pts · +14 vs 2025"><span class="bars__n">4</span><span class="bars__l">Creating sustainable value</span><span class="bars__t"><i></i></span><b>59%<em>+7</em></b></li>
+                  <li class="is-low" style="--v:60;--p:57" data-dim="1" tabindex="0" data-tip="Criterion 5: 60 of 100 pts · +3 vs 2025"><span class="bars__n">5</span><span class="bars__l">Performance &amp; transformation</span><span class="bars__t"><i></i></span><b>60%<em>+3</em></b></li>
+                  <li style="--v:64;--p:55" data-dim="2" tabindex="0" data-tip="Criterion 6: 128 of 200 pts · +18 vs 2025"><span class="bars__n">6</span><span class="bars__l">Stakeholder perceptions</span><span class="bars__t"><i></i></span><b>64%<em>+9</em></b></li>
+                  <li style="--v:60;--p:50" data-dim="2" tabindex="0" data-tip="Criterion 7: 120 of 200 pts · +20 vs 2025"><span class="bars__n">7</span><span class="bars__l">Strategic &amp; operational performance</span><span class="bars__t"><i></i></span><b>60%<em>+10</em></b></li>
                 </ul>
               </div>
 
-              <!-- Side column -->
               <div class="app__side">
                 <div class="card card--dark">
-                  <div class="card__top"><span>Biggest gap</span><svg class="i"><use href="#i-arrow-ur"/></svg></div>
+                  <div class="card__top"><span>Biggest gap</span><button type="button" class="gap__go" data-goto="plan" data-focus="act-1" aria-label="Open the plan for criterion 5" data-tip="Open the plan for criterion 5"><svg class="i"><use href="#i-arrow-ur"/></svg></button></div>
                   <p class="gap__title">Criterion 5</p>
                   <p class="gap__text">3 approaches have no evidence of review or refinement.</p>
                   <span class="chip chip--lime">+38 pts possible</span>
                 </div>
                 <div class="card">
                   <div class="card__top"><span>Assessors</span><span class="muted">8 of 11 done</span></div>
-                  <div class="team">
-                    <span class="av" style="--h:150">NR</span><span class="av" style="--h:30">SK</span><span class="av" style="--h:210">AM</span><span class="av" style="--h:330">LB</span><span class="av av--more">+7</span>
-                  </div>
+                  <div class="team"><span class="av" style="--h:150" tabindex="0" data-tip="Nora R. · finished">NR</span><span class="av" style="--h:30" tabindex="0" data-tip="Sam K. · finished">SK</span><span class="av" style="--h:210" tabindex="0" data-tip="Ali M. · scoring now">AM</span><span class="av" style="--h:330" tabindex="0" data-tip="Lena B. · not started">LB</span><span class="av av--more" tabindex="0" data-tip="7 more assessors">+7</span></div>
                   <span class="prog"><i style="width:73%"></i></span>
+                </div>
+              </div>
+            </div>
+            </div>
+
+            <!-- Evidence -->
+            <div class="app__view" data-view="evidence" role="tabpanel">
+              <div class="app__pad">
+                <div class="card">
+                  <div class="ev__head">
+                    <div><p class="ev__title">Evidence</p><p class="muted ev__sub">46 files linked · key file per criterion</p></div>
+                    <div class="filters"><button type="button" data-filter="all" aria-pressed="true">All <span>7</span></button><button type="button" data-filter="review" aria-pressed="false">In review <span>2</span></button><button type="button" data-filter="missing" aria-pressed="false">Missing <span>1</span></button></div>
+                  </div>
+                  <ul class="ev__list">
+                    <li data-status="ok"><span class="bars__n">1</span><span class="ev__name">Strategy 2026–2028<small>PDF · Nora R.</small></span><span class="st st--ok">Approved</span></li>
+                    <li data-status="ok"><span class="bars__n">2</span><span class="ev__name">Leadership survey results<small>Sheet · Sam K.</small></span><span class="st st--ok">Approved</span></li>
+                    <li data-status="review"><span class="bars__n">3</span><span class="ev__name">Stakeholder map<small>PDF · Ali M.</small></span><span class="st st--review">In review</span></li>
+                    <li data-status="ok"><span class="bars__n">4</span><span class="ev__name">Service design process<small>Doc · Sam K.</small></span><span class="st st--ok">Approved</span></li>
+                    <li data-status="missing"><span class="bars__n">5</span><span class="ev__name">Process review log<small>Not uploaded · Lena B.</small></span><span class="st st--missing">Missing</span></li>
+                    <li data-status="review"><span class="bars__n">6</span><span class="ev__name">Customer survey 2026<small>Sheet · Ali M.</small></span><span class="st st--review">In review</span></li>
+                    <li data-status="ok"><span class="bars__n">7</span><span class="ev__name">KPI dashboard Q3<small>Link · Nora R.</small></span><span class="st st--ok">Approved</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Plan -->
+            <div class="app__view" data-view="plan" role="tabpanel">
+              <div class="app__pad">
+                <div class="card">
+                  <div class="ev__head">
+                    <p class="ev__title">Improvement plan</p>
+                    <div class="pstats">
+                      <span class="pstat"><small>+86 pts possible</small><b id="plan-done" data-tpl="{d} of {t} done" data-total="6">0 of 6 done</b></span>
+                      <span class="pstat pstat--green"><small>Score with completed actions</small><b id="plan-proj" data-base="612">612</b></span>
+                    </div>
+                  </div>
+                  <ul class="acts">
+                    <li id="act-1"><label class="act"><input type="checkbox" data-pts="18"><span class="act__box" aria-hidden="true"></span><span class="act__t">Add a quarterly review to 3 key processes<small>Criterion 5 · Sam K. · Dec 20</small></span><b>+18</b></label></li>
+                    <li id="act-2"><label class="act"><input type="checkbox" data-pts="20"><span class="act__box" aria-hidden="true"></span><span class="act__t">Benchmark delivery KPIs against 2 peers<small>Criterion 5 · Lena B. · Jan 15</small></span><b>+20</b></label></li>
+                    <li id="act-3"><label class="act"><input type="checkbox" data-pts="12"><span class="act__box" aria-hidden="true"></span><span class="act__t">Run a supplier engagement survey<small>Criterion 3 · Ali M. · Jan 30</small></span><b>+12</b></label></li>
+                    <li id="act-4"><label class="act"><input type="checkbox" data-pts="16"><span class="act__box" aria-hidden="true"></span><span class="act__t">Set 3-year targets for operational KPIs<small>Criterion 7 · Nora R. · Feb 10</small></span><b>+16</b></label></li>
+                    <li id="act-5"><label class="act"><input type="checkbox" data-pts="10"><span class="act__box" aria-hidden="true"></span><span class="act__t">Document the service design process<small>Criterion 4 · Sam K. · Feb 28</small></span><b>+10</b></label></li>
+                    <li id="act-6"><label class="act"><input type="checkbox" data-pts="10"><span class="act__box" aria-hidden="true"></span><span class="act__t">Split the customer survey by region<small>Criterion 6 · Ali M. · Mar 5</small></span><b>+10</b></label></li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -439,5 +481,6 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/preview.js"></script>
 </body>
 </html>
