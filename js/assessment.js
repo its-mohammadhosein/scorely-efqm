@@ -274,6 +274,7 @@
       </nav>`;
     refresh();
     if (i.kind === 'result') renderSuggestions();
+    window.Glossary?.apply(panel, '.as-guide__t, .as-block__lead, .as-desc li');
   };
 
   // live summary for the current item

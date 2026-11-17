@@ -307,4 +307,7 @@
   };
   q.addEventListener('input', filter);
   filter();
+
+  // glossary hints in the model text (not in the glossary section itself)
+  window.Glossary?.apply(root, '.mp-concept > p, .mp-crit__text, .mp-guide li, .mp-part > p, .mp-ex li, .mp-desc li');
 })();

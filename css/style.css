@@ -557,3 +557,12 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 @media (min-width: 860px) { .model__cols--2 { grid-template-columns: repeat(2, 1fr); } }
 .model__c { grid-template-columns: auto minmax(0, 1fr) auto; }
 .model__c span { width: auto; min-width: 26px; padding: 0 6px; white-space: nowrap; }
+
+/* Glossary hints (js/glossary-tip.js) */
+.gl { text-decoration: underline dotted rgb(31 107 74 / .55); text-decoration-thickness: 1.5px; text-underline-offset: 3px; cursor: help; border-radius: 3px; }
+.gl:hover, .gl:focus-visible { background: rgb(199 239 107 / .35); text-decoration-color: var(--green); outline: none; }
+.tip--gl { max-width: min(340px, calc(100vw - 16px)); padding: 10px 14px; text-align: start; font-size: 0.82rem; line-height: 1.55; }
+.tip--gl b { display: block; margin-bottom: 3px; color: var(--lime); font-weight: 600; }
+.tip--gl.is-below { transform: translate(-50%, 4px) scale(.96); transform-origin: 50% 0; }
+.tip--gl.is-below.is-on { transform: translate(-50%, 10px); }
+.tip--gl.is-below::after { top: -4px; bottom: auto; }
