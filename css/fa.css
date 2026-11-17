@@ -45,3 +45,6 @@ body { line-height: 1.8; }
 .radar-mini div { grid-template-columns: 130px 1fr 30px; }
 .price__amt { flex-wrap: wrap; }
 .price__amt strong { font-size: 2.6rem; }
+
+/* the Persian typeface spaces tabular digits widely: big numbers use its normal figures */
+.gauge__num strong, .calc__dims b, .dims b, .strip__row strong, .pstat b { font-variant-numeric: normal; }
