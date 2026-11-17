@@ -1,0 +1,47 @@
+/* ==========================================================
+   Persian (RTL) layer — loaded after style.css by fa/index.html.
+   Bonyade Koodak with Persian digits; no letter-spacing (it breaks
+   Persian letter joining); directional bits mirrored.
+   ========================================================== */
+
+@font-face { font-family: "Bonyade Koodak"; src: url("../fonts/BonyadeKoodakKoochakFaNum-Light.woff") format("woff"); font-weight: 300; font-display: swap; }
+@font-face { font-family: "Bonyade Koodak"; src: url("../fonts/BonyadeKoodakKoochakFaNum-Regular.woff") format("woff"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Bonyade Koodak"; src: url("../fonts/BonyadeKoodakKoochakFaNum-Medium.woff") format("woff"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Bonyade Koodak"; src: url("../fonts/BonyadeKoodakKoochakFaNum-Bold.woff") format("woff"); font-weight: 600 700; font-display: swap; }
+
+:root {
+  --font: "Bonyade Koodak", "Geist", ui-sans-serif, system-ui, sans-serif;
+  --mono: "Bonyade Koodak", "Geist Mono", ui-monospace, monospace;
+}
+
+body { line-height: 1.8; }
+*, *::before, *::after { letter-spacing: 0 !important; }
+
+.h1 { line-height: 1.32; font-size: clamp(2.3rem, 6.6vw, 4.8rem); }
+.h2 { line-height: 1.38; }
+.lead { line-height: 1.9; }
+.eyebrow, .versus__label, .calc legend, .calc__kicker { font-size: 0.82rem; text-transform: none; }
+.step__n, .model__c b { font-size: 0.9rem; }
+
+/* Latin bits keep their own direction and typeface */
+.app__url, [lang="en"] { font-family: "Geist", ui-sans-serif, system-ui, sans-serif; }
+#email { direction: ltr; text-align: right; }
+#email:focus, #email:not(:placeholder-shown) { text-align: left; }
+
+/* language switch */
+.lang { font-family: "Geist", ui-sans-serif, system-ui, sans-serif; }
+
+/* arrows point the reading way */
+.btn .i, .card__top .i { transform: scaleX(-1); }
+.btn:hover .i { transform: scaleX(-1) translateX(3px); }
+
+/* bars, sliders and RADAR meters fill from the right */
+.bars__t i { transform-origin: right; background: linear-gradient(270deg, var(--green), #4f9c66); }
+.bars li.is-low .bars__t i { background: linear-gradient(270deg, #e9a23b, var(--coral)); }
+.range input::-webkit-slider-runnable-track { background: linear-gradient(270deg, var(--green) var(--p), #e2e0d8 var(--p)); }
+.radar-mini i { background: linear-gradient(270deg, var(--lime) calc(var(--v) * 1%), rgb(255 255 255 / .14) 0); }
+
+/* Persian words are wider than the English labels */
+.radar-mini div { grid-template-columns: 130px 1fr 30px; }
+.price__amt { flex-wrap: wrap; }
+.price__amt strong { font-size: 2.6rem; }

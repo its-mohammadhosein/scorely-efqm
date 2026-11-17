@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scorely — EFQM self-assessment, scored in days</title>
+  <meta name="description" content="Scorely helps companies run an EFQM self-assessment with their team, calculate their score out of 1,000 and turn the gaps into an improvement plan.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+      <symbol id="i-arrow-ur" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12.5 5 5L20 6.5"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+      <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.5 3.2-5.5 6.5-5.5s5.9 2 6.5 5.5"/><path d="M16 4.8a3.5 3.5 0 0 1 0 6.4M18 14.8c1.9.7 3.1 2.4 3.5 5.2"/></symbol>
+      <symbol id="i-radar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M12 12 18.5 5.5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></symbol>
+      <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M8 13h8"/></symbol>
+      <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></symbol>
+      <symbol id="i-trend" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></symbol>
+      <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6Z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></symbol>
+      <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3Z"/></symbol>
+      <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 2c.7 5.6 4.4 9.3 10 10-5.6.7-9.3 4.4-10 10-.7-5.6-4.4-9.3-10-10 5.6-.7 9.3-4.4 10-10Z" fill="currentColor" stroke="none"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- ===================== Header ===================== -->
+  <header class="site-header">
+    <div class="container header__row">
+      <a class="logo" href="#top" aria-label="Scorely home">
+        <svg class="logo__mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="61 82" stroke-linecap="round" transform="rotate(135 16 16)"/><circle cx="16" cy="16" r="4.5" fill="var(--lime)"/></svg>
+        Scorely
+      </a>
+      <nav class="nav" aria-label="Main">
+        <a href="#how">How it works</a>
+        <a href="calculator.html">Calculator</a>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="header__cta">
+        <a class="lang" href="fa/index.html" lang="fa" hreflang="fa">فا</a>
+        <a class="link-quiet" href="#">Log in</a>
+        <a class="btn btn--dark btn--sm" href="#start">Start free</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ===================== Hero ===================== -->
+    <section class="hero">
+      <div class="container hero__text">
+        <span class="eyebrow reveal"><svg class="i"><use href="#i-spark"/></svg>EFQM self-assessment software</span>
+        <h1 class="h1 reveal">Know your EFQM score<br><span class="soft">before the assessors do.</span></h1>
+        <p class="lead reveal">Scorely guides your team through all seven criteria, scores every answer with RADAR logic and turns your gaps into a clear improvement plan — in days, not months of spreadsheets.</p>
+        <div class="hero__actions reveal">
+          <a class="btn btn--green" href="#start">Start a free assessment <svg class="i"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--ghost" href="calculator.html">Calculate your EFQM score</a>
+        </div>
+        <p class="hero__note reveal">Free for your first assessment · No credit card</p>
+      </div>
+
+      <!-- Product preview -->
+      <div class="container">
+        <div class="stage reveal">
+          <div class="app" aria-label="Scorely dashboard preview" role="img">
+            <div class="app__bar">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="app__url">app.scorely.io/assessment/2026</span>
+            </div>
+            <div class="app__head">
+              <div>
+                <p class="app__kicker">Annual self-assessment · 2026</p>
+                <p class="app__title">Overview</p>
+              </div>
+              <div class="seg"><span class="on">Score</span><span>Evidence</span><span>Plan</span></div>
+            </div>
+
+            <div class="app__grid">
+              <!-- Total score -->
+              <div class="card card--score">
+                <div class="card__top"><span>Total score</span><span class="chip chip--up">+74 vs 2025</span></div>
+                <div class="gauge" data-value="612" data-max="1000">
+                  <svg viewBox="0 0 200 200" aria-hidden="true">
+                    <defs><linearGradient id="g-arc" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#1f6b4a"/><stop offset=".7" stop-color="#5aa36b"/><stop offset="1" stop-color="#c7ef6b"/></linearGradient></defs>
+                    <circle class="gauge__track" cx="100" cy="100" r="80"/>
+                    <circle class="gauge__val" cx="100" cy="100" r="80" stroke="url(#g-arc)"/>
+                  </svg>
+                  <div class="gauge__num"><strong data-count="612">612</strong><span>of 1,000</span></div>
+                </div>
+                <ul class="dims">
+                  <li><span>Direction</span><b>128<small>/200</small></b></li>
+                  <li><span>Execution</span><b>236<small>/400</small></b></li>
+                  <li><span>Results</span><b>248<small>/400</small></b></li>
+                </ul>
+              </div>
+
+              <!-- Criteria -->
+              <div class="card card--criteria">
+                <div class="card__top"><span>By criterion</span><span class="muted">% of available points</span></div>
+                <ul class="bars">
+                  <li style="--v:66"><span class="bars__n">1</span><span class="bars__l">Purpose, vision &amp; strategy</span><span class="bars__t"><i></i></span><b>66%</b></li>
+                  <li style="--v:62"><span class="bars__n">2</span><span class="bars__l">Culture &amp; leadership</span><span class="bars__t"><i></i></span><b>62%</b></li>
+                  <li style="--v:58"><span class="bars__n">3</span><span class="bars__l">Engaging stakeholders</span><span class="bars__t"><i></i></span><b>58%</b></li>
+                  <li style="--v:59"><span class="bars__n">4</span><span class="bars__l">Creating sustainable value</span><span class="bars__t"><i></i></span><b>59%</b></li>
+                  <li style="--v:60" class="is-low"><span class="bars__n">5</span><span class="bars__l">Performance &amp; transformation</span><span class="bars__t"><i></i></span><b>60%</b></li>
+                  <li style="--v:64"><span class="bars__n">6</span><span class="bars__l">Stakeholder perceptions</span><span class="bars__t"><i></i></span><b>64%</b></li>
+                  <li style="--v:60"><span class="bars__n">7</span><span class="bars__l">Strategic &amp; operational performance</span><span class="bars__t"><i></i></span><b>60%</b></li>
+                </ul>
+              </div>
+
+              <!-- Side column -->
+              <div class="app__side">
+                <div class="card card--dark">
+                  <div class="card__top"><span>Biggest gap</span><svg class="i"><use href="#i-arrow-ur"/></svg></div>
+                  <p class="gap__title">Criterion 5</p>
+                  <p class="gap__text">3 approaches have no evidence of review or refinement.</p>
+                  <span class="chip chip--lime">+38 pts possible</span>
+                </div>
+                <div class="card">
+                  <div class="card__top"><span>Assessors</span><span class="muted">8 of 11 done</span></div>
+                  <div class="team">
+                    <span class="av" style="--h:150">NR</span><span class="av" style="--h:30">SK</span><span class="av" style="--h:210">AM</span><span class="av" style="--h:330">LB</span><span class="av av--more">+7</span>
+                  </div>
+                  <span class="prog"><i style="width:73%"></i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Model strip ===================== -->
+    <section class="strip" aria-label="What Scorely covers">
+      <div class="container strip__row">
+        <div><strong>7</strong><span>criteria, every sub-criterion</span></div>
+        <div><strong>3</strong><span>dimensions: direction, execution, results</span></div>
+        <div><strong>1,000</strong><span>points, weighted the EFQM way</span></div>
+        <div><strong>RADAR</strong><span>scoring logic built into every question</span></div>
+      </div>
+    </section>
+
+    <!-- ===================== Before / after ===================== -->
+    <section class="section" id="how">
+      <div class="container">
+        <div class="head reveal">
+          <span class="eyebrow">Why teams switch</span>
+          <h2 class="h2">Self-assessment,<br><span class="soft">without the spreadsheet marathon.</span></h2>
+        </div>
+
+        <div class="versus">
+          <div class="versus__card reveal">
+            <p class="versus__label"><svg class="i"><use href="#i-x"/></svg>The usual way</p>
+            <ol class="versus__list">
+              <li><b>One giant workbook</b><span>Tabs per criterion, formulas nobody dares to touch.</span></li>
+              <li><b>Scores by feeling</b><span>Each assessor reads RADAR differently, so numbers drift.</span></li>
+              <li><b>Evidence in inboxes</b><span>Documents scattered across email, drives and desks.</span></li>
+              <li><b>A report, then silence</b><span>Gaps are listed once and forgotten until next year.</span></li>
+            </ol>
+          </div>
+          <div class="versus__card versus__card--good reveal">
+            <p class="versus__label"><svg class="i"><use href="#i-check"/></svg>With Scorely</p>
+            <ol class="versus__list">
+              <li><b>One guided workspace</b><span>Every criterion broken into plain questions for each owner.</span></li>
+              <li><b>Calibrated scoring</b><span>RADAR attributes scored one by one, then reconciled as a team.</span></li>
+              <li><b>Evidence attached</b><span>Files and links live next to the answer they prove.</span></li>
+              <li><b>A living plan</b><span>Every gap becomes an action with an owner and a deadline.</span></li>
+            </ol>
+          </div>
+        </div>
+
+        <ol class="steps">
+          <li class="step reveal"><span class="step__n">01</span><h3>Set up in an afternoon</h3><p>Pick your scope, invite criterion owners and assessors. Scorely builds the assessment for you.</p></li>
+          <li class="step reveal"><span class="step__n">02</span><h3>Answer and attach</h3><p>Owners answer guided questions and attach evidence. Progress is visible to everyone.</p></li>
+          <li class="step reveal"><span class="step__n">03</span><h3>Score as a team</h3><p>Assessors score each RADAR attribute alone, then meet on the items where they disagree.</p></li>
+          <li class="step reveal"><span class="step__n">04</span><h3>Act on the gaps</h3><p>Your score out of 1,000, ranked strengths and gaps, and an improvement plan you can track.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===================== Calculator ===================== -->
+    <section class="section section--tint" id="calculator">
+      <div class="container">
+        <div class="head reveal">
+          <span class="eyebrow">Quick estimate</span>
+          <h2 class="h2">Where would you land<br><span class="soft">if you were scored today?</span></h2>
+          <p class="lead">Move each slider to how mature you think you are on that criterion. We apply the EFQM point weights and show your estimated total.</p>
+        </div>
+
+        <div class="calc reveal">
+          <form class="calc__inputs" id="calc" aria-label="EFQM score estimate">
+            <fieldset>
+              <legend>Direction</legend>
+              <label class="range"><span class="range__l">1 · Purpose, vision &amp; strategy <em>100 pts</em></span><input type="range" min="0" max="100" step="5" value="55" data-pts="100"><output>55%</output></label>
+              <label class="range"><span class="range__l">2 · Organisational culture &amp; leadership <em>100 pts</em></span><input type="range" min="0" max="100" step="5" value="50" data-pts="100"><output>50%</output></label>
+            </fieldset>
+            <fieldset>
+              <legend>Execution</legend>
+              <label class="range"><span class="range__l">3 · Engaging stakeholders <em>100 pts</em></span><input type="range" min="0" max="100" step="5" value="45" data-pts="100"><output>45%</output></label>
+              <label class="range"><span class="range__l">4 · Creating sustainable value <em>200 pts</em></span><input type="range" min="0" max="100" step="5" value="50" data-pts="200"><output>50%</output></label>
+              <label class="range"><span class="range__l">5 · Driving performance &amp; transformation <em>100 pts</em></span><input type="range" min="0" max="100" step="5" value="40" data-pts="100"><output>40%</output></label>
+            </fieldset>
+            <fieldset>
+              <legend>Results</legend>
+              <label class="range"><span class="range__l">6 · Stakeholder perceptions <em>200 pts</em></span><input type="range" min="0" max="100" step="5" value="45" data-pts="200"><output>45%</output></label>
+              <label class="range"><span class="range__l">7 · Strategic &amp; operational performance <em>200 pts</em></span><input type="range" min="0" max="100" step="5" value="50" data-pts="200"><output>50%</output></label>
+            </fieldset>
+          </form>
+
+          <aside class="calc__result" aria-live="polite">
+            <p class="calc__kicker">Estimated score</p>
+            <div class="gauge gauge--lg" id="calc-gauge" data-value="480" data-max="1000">
+              <svg viewBox="0 0 200 200" aria-hidden="true">
+                <defs><linearGradient id="g-arc-2" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#c7ef6b"/><stop offset="1" stop-color="#ffffff"/></linearGradient></defs>
+                <circle class="gauge__track" cx="100" cy="100" r="80"/>
+                <circle class="gauge__val" cx="100" cy="100" r="80" stroke="url(#g-arc-2)"/>
+              </svg>
+              <div class="gauge__num"><strong id="calc-total">480</strong><span>of 1,000</span></div>
+            </div>
+            <p class="calc__band" id="calc-band">Established</p>
+            <p class="calc__hint" id="calc-hint">Solid foundations. Your quickest wins are in criterion 5.</p>
+            <ul class="calc__dims">
+              <li><span>Direction</span><b id="d-dir">105</b><small>/200</small></li>
+              <li><span>Execution</span><b id="d-exe">185</b><small>/400</small></li>
+              <li><span>Results</span><b id="d-res">190</b><small>/400</small></li>
+            </ul>
+            <a class="btn btn--lime" href="calculator.html">Full calculator with RADAR questions <svg class="i"><use href="#i-arrow"/></svg></a>
+            <p class="calc__fine">A rough self-estimate, not an official EFQM score.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Features ===================== -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="head reveal">
+          <span class="eyebrow">Everything in one place</span>
+          <h2 class="h2">Built for quality teams<br><span class="soft">who have done this before.</span></h2>
+        </div>
+
+        <div class="bento">
+          <article class="tile tile--wide tile--green reveal">
+            <svg class="i tile__i"><use href="#i-radar"/></svg>
+            <h3>RADAR scoring, step by step</h3>
+            <p>Approach, deployment, assessment and refinement — or relevance and performance for results. Each attribute is scored on its own with clear guidance, so the total stands up to scrutiny.</p>
+            <div class="radar-mini" aria-hidden="true">
+              <div><span>Approach</span><i style="--v:75"></i><b>75</b></div>
+              <div><span>Deployment</span><i style="--v:60"></i><b>60</b></div>
+              <div><span>Assess &amp; refine</span><i style="--v:40"></i><b>40</b></div>
+            </div>
+          </article>
+          <article class="tile reveal">
+            <svg class="i tile__i"><use href="#i-users"/></svg>
+            <h3>Team consensus</h3>
+            <p>See where assessors disagree by more than 15 points and settle it in one focused meeting.</p>
+          </article>
+          <article class="tile reveal">
+            <svg class="i tile__i"><use href="#i-folder"/></svg>
+            <h3>Evidence library</h3>
+            <p>Attach documents and links to each answer. Reuse them next year in one click.</p>
+          </article>
+          <article class="tile reveal">
+            <svg class="i tile__i"><use href="#i-target"/></svg>
+            <h3>Improvement plan</h3>
+            <p>Turn every gap into an action with an owner, deadline and the points it could add.</p>
+          </article>
+          <article class="tile reveal">
+            <svg class="i tile__i"><use href="#i-trend"/></svg>
+            <h3>Year-on-year trends</h3>
+            <p>Compare assessments over time, by criterion, unit or site.</p>
+          </article>
+          <article class="tile tile--wide tile--dark reveal">
+            <svg class="i tile__i"><use href="#i-doc"/></svg>
+            <h3>Reports ready for submission</h3>
+            <p>Export a clean, structured self-assessment report and a management summary as PDF or Word — formatted, numbered and ready to share with leadership or external assessors.</p>
+            <div class="langs"><span><svg class="i"><use href="#i-globe"/></svg>English</span><span>فارسی</span><span>PDF</span><span>Word</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Model explainer ===================== -->
+    <section class="section section--flush">
+      <div class="container">
+        <div class="model reveal">
+          <div class="model__head">
+            <span class="eyebrow eyebrow--dark">How the 1,000 points split</span>
+            <h2 class="h2">Every criterion,<br><span class="soft">weighted correctly.</span></h2>
+            <p>Scorely applies the model's point allocation automatically, so a strong result in a 200-point criterion counts twice as much as in a 100-point one.</p>
+          </div>
+          <div class="model__cols">
+            <div class="model__col">
+              <p class="model__dim">Direction <b>200</b></p>
+              <p class="model__c"><span>1</span>Purpose, vision &amp; strategy<b>100</b></p>
+              <p class="model__c"><span>2</span>Organisational culture &amp; leadership<b>100</b></p>
+            </div>
+            <div class="model__col">
+              <p class="model__dim">Execution <b>400</b></p>
+              <p class="model__c"><span>3</span>Engaging stakeholders<b>100</b></p>
+              <p class="model__c"><span>4</span>Creating sustainable value<b>200</b></p>
+              <p class="model__c"><span>5</span>Driving performance &amp; transformation<b>100</b></p>
+            </div>
+            <div class="model__col">
+              <p class="model__dim">Results <b>400</b></p>
+              <p class="model__c"><span>6</span>Stakeholder perceptions<b>200</b></p>
+              <p class="model__c"><span>7</span>Strategic &amp; operational performance<b>200</b></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Pricing ===================== -->
+    <section class="section" id="pricing">
+      <div class="container">
+        <div class="head head--center reveal">
+          <span class="eyebrow">Pricing</span>
+          <h2 class="h2">Start free.<br><span class="soft">Grow when your team does.</span></h2>
+        </div>
+
+        <div class="prices">
+          <article class="price reveal">
+            <h3>Starter</h3>
+            <p class="price__desc">Try a full assessment with a small team.</p>
+            <p class="price__amt"><strong>$0</strong><span>forever</span></p>
+            <a class="btn btn--ghost" href="#start">Start free</a>
+            <ul>
+              <li><svg class="i"><use href="#i-check"/></svg>1 assessment</li>
+              <li><svg class="i"><use href="#i-check"/></svg>Up to 3 users</li>
+              <li><svg class="i"><use href="#i-check"/></svg>Score and gap summary</li>
+            </ul>
+          </article>
+          <article class="price price--pick reveal">
+            <span class="price__tag">Most chosen</span>
+            <h3>Team</h3>
+            <p class="price__desc">For a quality office running yearly cycles.</p>
+            <p class="price__amt"><strong>$49</strong><span>/ month, billed yearly</span></p>
+            <a class="btn btn--lime" href="#start">Start 14-day trial</a>
+            <ul>
+              <li><svg class="i"><use href="#i-check"/></svg>Unlimited assessments</li>
+              <li><svg class="i"><use href="#i-check"/></svg>Up to 25 users</li>
+              <li><svg class="i"><use href="#i-check"/></svg>Consensus scoring &amp; evidence library</li>
+              <li><svg class="i"><use href="#i-check"/></svg>Improvement plans &amp; trends</li>
+              <li><svg class="i"><use href="#i-check"/></svg>PDF and Word reports</li>
+            </ul>
+          </article>
+          <article class="price reveal">
+            <h3>Enterprise</h3>
+            <p class="price__desc">Several sites, business units or subsidiaries.</p>
+            <p class="price__amt"><strong>Custom</strong><span>talk to us</span></p>
+            <a class="btn btn--ghost" href="#start">Book a demo</a>
+            <ul>
+              <li><svg class="i"><use href="#i-check"/></svg>Everything in Team</li>
+              <li><svg class="i"><use href="#i-check"/></svg>Unlimited users and units</li>
+              <li><svg class="i"><use href="#i-check"/></svg>Single sign-on</li>
+              <li><svg class="i"><use href="#i-check"/></svg>On-premise option</li>
+              <li><svg class="i"><use href="#i-check"/></svg>Onboarding workshop</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FAQ ===================== -->
+    <section class="section section--flush" id="faq">
+      <div class="container faq">
+        <div class="head reveal">
+          <span class="eyebrow">FAQ</span>
+          <h2 class="h2">Questions<br><span class="soft">we hear a lot.</span></h2>
+        </div>
+        <div class="faq__list reveal">
+          <details open>
+            <summary>Is the score official?<svg class="i"><use href="#i-plus"/></svg></summary>
+            <p>No. Scorely gives you a structured self-assessment score using the EFQM Model's criteria, weights and RADAR logic. Official recognition only comes from an assessment by EFQM or its partners — Scorely helps you prepare for it.</p>
+          </details>
+          <details>
+            <summary>Do we need EFQM-trained people to use it?<svg class="i"><use href="#i-plus"/></svg></summary>
+            <p>It helps to have one trained assessor to lead the process. Everyone else just answers plain questions about their area, with guidance on what good looks like.</p>
+          </details>
+          <details>
+            <summary>Can we import last year's assessment?<svg class="i"><use href="#i-plus"/></svg></summary>
+            <p>Yes. Upload your previous scores from a spreadsheet and Scorely maps them to the criteria, so you can compare from day one.</p>
+          </details>
+          <details>
+            <summary>Is our data safe?<svg class="i"><use href="#i-plus"/></svg></summary>
+            <p>Your assessment stays private to your company. Data is encrypted in transit and at rest, and Enterprise customers can host Scorely on their own servers.</p>
+          </details>
+          <details>
+            <summary>Does it work in Persian?<svg class="i"><use href="#i-plus"/></svg></summary>
+            <p>Yes. The whole app and every report work in English and Persian, with a proper right-to-left layout.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CTA ===================== -->
+    <section class="section section--flush" id="start">
+      <div class="container">
+        <div class="cta reveal">
+          <div>
+            <h2 class="h2">Ready to see<br><span class="lime">your real score?</span></h2>
+            <p>Your first assessment is free. Set it up in an afternoon.</p>
+          </div>
+          <form class="cta__form" onsubmit="event.preventDefault(); this.classList.add('sent')">
+            <label class="visually-hidden" for="email">Work email</label>
+            <input id="email" type="email" placeholder="Work email" required>
+            <button class="btn btn--lime" type="submit">Start free <svg class="i"><use href="#i-arrow"/></svg></button>
+            <p class="cta__ok">Thanks — check your inbox to get started.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer__row">
+      <a class="logo" href="#top">
+        <svg class="logo__mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="61 82" stroke-linecap="round" transform="rotate(135 16 16)"/><circle cx="16" cy="16" r="4.5" fill="var(--lime)"/></svg>
+        Scorely
+      </a>
+      <nav class="footer__nav" aria-label="Footer">
+        <a href="#how">How it works</a><a href="calculator.html">Calculator</a><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="fa/index.html" lang="fa" hreflang="fa">فارسی</a>
+      </nav>
+    </div>
+    <div class="container footer__fine">
+      <p>© 2026 Scorely</p>
+      <p>EFQM and the EFQM Model are trademarks of EFQM. Scorely is an independent tool and is not affiliated with or endorsed by EFQM.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

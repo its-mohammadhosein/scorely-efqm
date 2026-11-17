@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EFQM score calculator — Scorely</title>
+  <meta name="description" content="Calculate your organisation's EFQM score by answering 19 simple questions based on RADAR logic.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/calc.css">
+</head>
+<body class="calc-page">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+      <symbol id="i-print" viewBox="0 0 24 24"><path d="M7 9V3h10v6M7 17H4v-7h16v7h-3"/><path d="M7 14h10v7H7Z"/></symbol>
+      <symbol id="i-reset" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.5-5.8L4 8.5"/><path d="M4 3.5v5h5"/></symbol>
+    </defs>
+  </svg>
+
+  <header class="site-header">
+    <div class="container header__row">
+      <a class="logo" href="index.html" aria-label="Scorely home">
+        <svg class="logo__mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="61 82" stroke-linecap="round" transform="rotate(135 16 16)"/><circle cx="16" cy="16" r="4.5" fill="var(--lime)"/></svg>
+        Scorely
+      </a>
+      <div class="header__cta">
+        <a class="lang" href="fa/calculator.html" lang="fa" hreflang="fa">فا</a>
+        <a class="btn btn--ghost btn--sm" href="index.html">Back to home</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="cp-hero">
+      <div class="container">
+        <span class="eyebrow">EFQM score calculator</span>
+        <h1 class="h2">Work out your score<br><span class="soft">in about ten minutes.</span></h1>
+        <p class="lead">For each criterion, answer a few RADAR questions. Pick the option that matches the real evidence in your organisation. Your score is calculated out of 1,000 with the EFQM Model's weights.</p>
+        <ul class="cp-legend" aria-label="Answer levels">
+          <li><b>0</b>No evidence</li>
+          <li><b>25</b>Limited</li>
+          <li><b>50</b>Evident</li>
+          <li><b>75</b>Clear</li>
+          <li><b>100</b>Comprehensive</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="container cp-layout">
+      <form class="cp-form" id="cp-form" aria-label="Self-assessment questions">
+        <!-- criteria are built by js/calc.js -->
+        <noscript><p class="cp-noscript">Please turn on JavaScript to use the calculator.</p></noscript>
+      </form>
+
+      <aside class="cp-result" id="result" aria-live="polite">
+        <div class="cp-result__card">
+          <p class="calc__kicker">Your score</p>
+          <div class="gauge gauge--lg" id="cp-gauge" data-max="1000">
+            <svg viewBox="0 0 200 200" aria-hidden="true">
+              <defs><linearGradient id="g-cp" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#c7ef6b"/><stop offset="1" stop-color="#ffffff"/></linearGradient></defs>
+              <circle class="gauge__track" cx="100" cy="100" r="80"/>
+              <circle class="gauge__val" cx="100" cy="100" r="80" stroke="url(#g-cp)"/>
+            </svg>
+            <div class="gauge__num"><strong id="cp-total">0</strong><span>of 1,000</span></div>
+          </div>
+          <p class="calc__band" id="cp-band">Getting started</p>
+          <p class="cp-progress"><span id="cp-done">0</span> of <span id="cp-count">19</span> questions answered</p>
+          <span class="cp-progress__bar"><i id="cp-done-bar"></i></span>
+
+          <ul class="calc__dims">
+            <li><span>Direction</span><b id="cp-d0">0</b><small>/200</small></li>
+            <li><span>Execution</span><b id="cp-d1">0</b><small>/400</small></li>
+            <li><span>Results</span><b id="cp-d2">0</b><small>/400</small></li>
+          </ul>
+
+          <ul class="cp-crit" id="cp-crit"></ul>
+
+          <div class="cp-gaps">
+            <p class="cp-gaps__t">Biggest room to improve</p>
+            <ol id="cp-gaps"></ol>
+          </div>
+
+          <div class="cp-actions">
+            <button class="btn btn--lime" type="button" id="cp-print"><svg class="i"><use href="#i-print"/></svg>Print or save as PDF</button>
+            <button class="btn cp-reset" type="button" id="cp-reset"><svg class="i"><use href="#i-reset"/></svg>Start over</button>
+          </div>
+          <p class="calc__fine">A rough self-assessment, not an official EFQM score.</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- phones: the total stays in view while answering -->
+  <a class="cp-bar" href="#result" aria-label="See your result">
+    <span>Your score</span>
+    <strong><span id="cp-bar-total">0</span><small> / 1,000</small></strong>
+    <span class="cp-bar__go">Result <svg class="i"><use href="#i-arrow"/></svg></span>
+  </a>
+
+  <footer class="site-footer">
+    <div class="container footer__fine">
+      <p>© 2026 Scorely</p>
+      <p>EFQM and the EFQM Model are trademarks of EFQM. Scorely is an independent tool and is not affiliated with or endorsed by EFQM.</p>
+    </div>
+  </footer>
+
+  <script src="js/calc.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>محاسبه‌گر امتیاز EFQM — اسکورلی</title>
+  <meta name="description" content="امتیاز EFQM سازمان خود را با پاسخ به ۱۹ پرسش ساده بر پایهٔ منطق رادار محاسبه کنید.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/fa.css">
+  <link rel="stylesheet" href="../css/calc.css">
+</head>
+<body class="calc-page">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+      <symbol id="i-print" viewBox="0 0 24 24"><path d="M7 9V3h10v6M7 17H4v-7h16v7h-3"/><path d="M7 14h10v7H7Z"/></symbol>
+      <symbol id="i-reset" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.5-5.8L4 8.5"/><path d="M4 3.5v5h5"/></symbol>
+    </defs>
+  </svg>
+
+  <header class="site-header">
+    <div class="container header__row">
+      <a class="logo" href="index.html" aria-label="صفحهٔ اصلی اسکورلی">
+        <svg class="logo__mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="61 82" stroke-linecap="round" transform="rotate(135 16 16)"/><circle cx="16" cy="16" r="4.5" fill="var(--lime)"/></svg>
+        اسکورلی
+      </a>
+      <div class="header__cta">
+        <a class="lang" href="../calculator.html" lang="en" hreflang="en">EN</a>
+        <a class="btn btn--ghost btn--sm" href="index.html">بازگشت به صفحهٔ اصلی</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="cp-hero">
+      <div class="container">
+        <span class="eyebrow">محاسبه‌گر امتیاز EFQM</span>
+        <h1 class="h2">امتیاز سازمانتان را<br><span class="soft">در ده دقیقه حساب کنید.</span></h1>
+        <p class="lead">برای هر معیار، به چند پرسش رادار پاسخ دهید. گزینه‌ای را انتخاب کنید که با شواهد واقعی سازمانتان جور درمی‌آید. امتیاز با وزن‌های مدل EFQM و از ۱٬۰۰۰ محاسبه می‌شود.</p>
+        <ul class="cp-legend" aria-label="سطح‌های پاسخ">
+          <li><b>۰</b>بدون شواهد</li>
+          <li><b>۲۵</b>محدود</li>
+          <li><b>۵۰</b>مشهود</li>
+          <li><b>۷۵</b>روشن</li>
+          <li><b>۱۰۰</b>جامع</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="container cp-layout">
+      <form class="cp-form" id="cp-form" aria-label="پرسش‌های خودارزیابی">
+        <!-- criteria are built by js/calc.js -->
+        <noscript><p class="cp-noscript">برای استفاده از محاسبه‌گر، جاوااسکریپت مرورگر را فعال کنید.</p></noscript>
+      </form>
+
+      <aside class="cp-result" id="result" aria-live="polite">
+        <div class="cp-result__card">
+          <p class="calc__kicker">امتیاز شما</p>
+          <div class="gauge gauge--lg" id="cp-gauge" data-max="1000">
+            <svg viewBox="0 0 200 200" aria-hidden="true">
+              <defs><linearGradient id="g-cp" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#c7ef6b"/><stop offset="1" stop-color="#ffffff"/></linearGradient></defs>
+              <circle class="gauge__track" cx="100" cy="100" r="80"/>
+              <circle class="gauge__val" cx="100" cy="100" r="80" stroke="url(#g-cp)"/>
+            </svg>
+            <div class="gauge__num"><strong id="cp-total">۰</strong><span>از ۱٬۰۰۰</span></div>
+          </div>
+          <p class="calc__band" id="cp-band">در آغاز راه</p>
+          <p class="cp-progress"><span id="cp-done">۰</span> از <span id="cp-count">۱۹</span> پرسش پاسخ داده شده</p>
+          <span class="cp-progress__bar"><i id="cp-done-bar"></i></span>
+
+          <ul class="calc__dims">
+            <li><span>جهت‌گیری</span><b id="cp-d0">۰</b><small>/۲۰۰</small></li>
+            <li><span>اجرا</span><b id="cp-d1">۰</b><small>/۴۰۰</small></li>
+            <li><span>نتایج</span><b id="cp-d2">۰</b><small>/۴۰۰</small></li>
+          </ul>
+
+          <ul class="cp-crit" id="cp-crit"></ul>
+
+          <div class="cp-gaps">
+            <p class="cp-gaps__t">بیشترین فرصت بهبود</p>
+            <ol id="cp-gaps"></ol>
+          </div>
+
+          <div class="cp-actions">
+            <button class="btn btn--lime" type="button" id="cp-print"><svg class="i"><use href="#i-print"/></svg>چاپ یا ذخیرهٔ PDF</button>
+            <button class="btn cp-reset" type="button" id="cp-reset"><svg class="i"><use href="#i-reset"/></svg>شروع دوباره</button>
+          </div>
+          <p class="calc__fine">این یک خودارزیابی تقریبی است، نه امتیاز رسمی EFQM.</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- phones: the total stays in view while answering -->
+  <a class="cp-bar" href="#result" aria-label="مشاهدهٔ نتیجه">
+    <span>امتیاز شما</span>
+    <strong><span id="cp-bar-total">۰</span><small> / ۱٬۰۰۰</small></strong>
+    <span class="cp-bar__go">نتیجه <svg class="i"><use href="#i-arrow"/></svg></span>
+  </a>
+
+  <footer class="site-footer">
+    <div class="container footer__fine">
+      <p>© ۱۴۰۵ اسکورلی</p>
+      <p>EFQM و مدل EFQM علائم تجاری متعلق به EFQM هستند. اسکورلی ابزاری مستقل است و هیچ وابستگی یا تأییدی از سوی EFQM ندارد.</p>
+    </div>
+  </footer>
+
+  <script src="../js/calc.js"></script>
+</body>
+</html>
