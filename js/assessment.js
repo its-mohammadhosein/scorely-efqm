@@ -102,6 +102,7 @@
       </div>
     </div></div>
     <div class="container as-layout">
+      <button type="button" class="as-skip" id="as-skip">${L('Skip to scoring', 'رفتن به امتیازدهی')}</button>
       <button type="button" class="as-navbtn" id="as-navbtn" aria-controls="as-nav" aria-expanded="false">${ICON.menu}<span id="as-navbtn-t"></span></button>
       <nav class="as-nav" id="as-nav" aria-label="${L('Sub-criteria', 'زیرمعیارها')}">
         <div class="as-nav__head"><b>${L('Sub-criteria', 'زیرمعیارها')}</b><button type="button" class="as-iconbtn" id="as-navclose" aria-label="${L('Close', 'بستن')}">${ICON.x}</button></div>
@@ -433,6 +434,11 @@
     if (focus) { scrollTo({ top: 0 }); panel.focus({ preventScroll: true }); }
   };
   addEventListener('hashchange', () => route(true));
+  // keyboard users skip the 33 navigator links and land on the item's first control
+  $('#as-skip').addEventListener('click', () => {
+    const first = panel.querySelector('input, textarea, select, button:not([hidden])');
+    (first || panel).focus();
+  });
   $('#as-navbtn').addEventListener('click', () => navOpen(true));
   $('#as-navclose').addEventListener('click', () => navOpen(false));
   $('#as-scrim').addEventListener('click', () => navOpen(false));
