@@ -180,3 +180,10 @@ body[data-plan="team"] .lock-ent { display: grid; }
   .cp-note textarea { background: #fff; box-shadow: none; padding: 4px 0; resize: none; }
   .cp-compare { background: #fff !important; color: #000 !important; }
 }
+
+/* header with Model + Home buttons: keep it on one line on small phones */
+@media (max-width: 420px) {
+  .calc-page .header__cta { gap: 6px; }
+  .calc-page .header__cta .btn--sm { padding: 0 12px; white-space: nowrap; }
+  .calc-page .logo { font-size: 1.1rem; }
+}
