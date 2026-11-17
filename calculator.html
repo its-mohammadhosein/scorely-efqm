@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>EFQM score calculator — Scorely</title>
-  <meta name="description" content="Calculate your organisation's EFQM score by answering 19 simple questions based on RADAR logic.">
+  <title>Excellence score calculator — Scorely</title>
+  <meta name="description" content="Estimate your organisation's score on the 1404 Organizational Excellence Model by answering 28 simple RADAR questions.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -38,15 +38,15 @@
   <main>
     <section class="cp-hero">
       <div class="container">
-        <span class="eyebrow">EFQM score calculator</span>
+        <span class="eyebrow">Excellence score calculator</span>
         <h1 class="h2">Work out your score<br><span class="soft">in about ten minutes.</span></h1>
-        <p class="lead">For each criterion, answer a few RADAR questions. Pick the option that matches the real evidence in your organisation. Your score is calculated out of 1,000 with the EFQM Model's weights.</p>
+        <p class="lead">For each criterion, answer a few RADAR questions. Pick the option that matches the real evidence in your organisation. Your score is calculated out of 1,000 with the weights of the 1404 Organizational Excellence Model.</p>
         <ul class="cp-legend" aria-label="Answer levels">
           <li><b>0</b>No evidence</li>
           <li><b>25</b>Limited</li>
-          <li><b>50</b>Evident</li>
-          <li><b>75</b>Clear</li>
-          <li><b>100</b>Comprehensive</li>
+          <li><b>50</b>Good</li>
+          <li><b>75</b>Complete</li>
+          <li><b>100</b>Excellent</li>
         </ul>
         <div class="cp-plan" aria-label="Preview by plan">
           <p class="cp-plan__l">See what each plan adds, right here</p>
@@ -91,9 +91,8 @@
           <span class="cp-progress__bar"><i id="cp-done-bar"></i></span>
 
           <ul class="calc__dims">
-            <li><span>Direction</span><b id="cp-d0">0</b><small>/200</small></li>
-            <li><span>Execution</span><b id="cp-d1">0</b><small>/400</small></li>
-            <li><span>Results</span><b id="cp-d2">0</b><small>/400</small></li>
+            <li><span>Enablers</span><b id="cp-d0">0</b><small>/550</small></li>
+            <li><span>Results</span><b id="cp-d1">0</b><small>/450</small></li>
           </ul>
 
           <div class="cp-full need-team">
@@ -127,7 +126,8 @@
             <button class="btn btn--lime need-team" type="button" id="cp-print"><svg class="i"><use href="#i-print"/></svg>Print or save as PDF</button>
             <button class="btn cp-reset" type="button" id="cp-reset"><svg class="i"><use href="#i-reset"/></svg>Start over</button>
           </div>
-          <p class="calc__fine">A rough self-assessment, not an official EFQM score.</p>
+          <a class="cp-full" href="assessment.html">Run the full assessment — 33 items, 6 RADAR attributes each →</a>
+          <p class="calc__fine">A rough self-estimate, not an official award score.</p>
         </div>
       </aside>
     </div>
@@ -143,10 +143,12 @@
   <footer class="site-footer">
     <div class="container footer__fine">
       <p>© 2026 Scorely</p>
-      <p>EFQM and the EFQM Model are trademarks of EFQM. Scorely is an independent tool and is not affiliated with or endorsed by EFQM.</p>
+      <p>Model content: Organizational Excellence Model, 1404 edition, Industrial Management Institute. Scorely is an independent tool, not affiliated with or endorsed by the Institute.</p>
     </div>
   </footer>
 
+  <script src="js/models/imi-1404.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/calc.js"></script>
 </body>
 </html>

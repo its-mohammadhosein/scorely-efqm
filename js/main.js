@@ -58,8 +58,8 @@
   const total = document.getElementById('calc-total');
   const band = document.getElementById('calc-band');
   const hint = document.getElementById('calc-hint');
-  const dims = { dir: [0, 1], exe: [2, 3, 4], res: [5, 6] };
-  const names = FA ? ['هدف، چشم‌انداز و استراتژی', 'فرهنگ سازمانی و رهبری', 'درگیر کردن ذی‌نفعان', 'خلق ارزش پایدار', 'هدایت عملکرد و تحول', 'ادراکات ذی‌نفعان', 'عملکرد استراتژیک و عملیاتی'] : ['purpose, vision & strategy', 'culture & leadership', 'engaging stakeholders', 'creating sustainable value', 'driving performance & transformation', 'stakeholder perceptions', 'strategic & operational performance'];
+  const dims = { en: [0, 1, 2, 3, 4, 5], res: [6] }; // 1404 model: enablers 1–6 (550), results 7 (450)
+  const names = FA ? ['رهبری', 'استراتژی', 'کارکنان', 'قابلیت‌ها', 'مشتریان', 'عملیات', 'نتایج'] : ['leadership', 'strategy', 'people', 'capabilities', 'customers', 'operations', 'results'];
   const bands = FA ? [
     [0, 'در آغاز راه', 'از توافق بر سر هدف و چند رویکرد کلیدی شروع کنید.'],
     [250, 'در حال توسعه', 'پایه‌ها شکل گرفته‌اند. روی استقرار یکپارچهٔ رویکردها تمرکز کنید.'],

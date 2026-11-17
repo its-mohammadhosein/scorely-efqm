@@ -187,3 +187,10 @@ body[data-plan="team"] .lock-ent { display: grid; }
   .calc-page .header__cta .btn--sm { padding: 0 12px; white-space: nowrap; }
   .calc-page .logo { font-size: 1.1rem; }
 }
+
+/* 1404 model: ids like "7-1", two totals (enablers / results), link to the full assessment */
+.cp-card__n { width: auto; min-width: 32px; padding: 0 8px; }
+.cp-crit li { grid-template-columns: 34px 1fr 44px; }
+.cp-crit__n { width: auto; min-width: 22px; padding: 0 5px; }
+.cp-full { display: block; padding: 12px 14px; border-radius: 14px; background: rgb(199 239 107 / .12); color: var(--lime); font-size: 0.88rem; font-weight: 500; text-align: center; transition: background-color .2s ease; }
+.cp-full:hover { background: rgb(199 239 107 / .22); }

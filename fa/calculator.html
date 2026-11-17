@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>محاسبه‌گر امتیاز EFQM — اسکورلی</title>
-  <meta name="description" content="امتیاز EFQM سازمان خود را با پاسخ به ۱۹ پرسش ساده بر پایهٔ منطق رادار محاسبه کنید.">
+  <title>محاسبه‌گر امتیاز تعالی — اسکورلی</title>
+  <meta name="description" content="امتیاز سازمان خود در الگوی تعالی سازمانی ۱۴۰۴ را با پاسخ به ۲۸ پرسش سادهٔ رادار برآورد کنید.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&display=swap" rel="stylesheet">
@@ -39,15 +39,15 @@
   <main>
     <section class="cp-hero">
       <div class="container">
-        <span class="eyebrow">محاسبه‌گر امتیاز EFQM</span>
+        <span class="eyebrow">محاسبه‌گر امتیاز تعالی</span>
         <h1 class="h2">امتیاز سازمانتان را<br><span class="soft">در ده دقیقه حساب کنید.</span></h1>
-        <p class="lead">برای هر معیار، به چند پرسش رادار پاسخ دهید. گزینه‌ای را انتخاب کنید که با شواهد واقعی سازمانتان جور درمی‌آید. امتیاز با وزن‌های مدل EFQM و از ۱٬۰۰۰ محاسبه می‌شود.</p>
+        <p class="lead">برای هر معیار، به چند پرسش رادار پاسخ دهید. گزینه‌ای را انتخاب کنید که با شواهد واقعی سازمانتان جور درمی‌آید. امتیاز با وزن‌های الگوی تعالی سازمانی ۱۴۰۴ و از ۱٬۰۰۰ محاسبه می‌شود.</p>
         <ul class="cp-legend" aria-label="سطح‌های پاسخ">
-          <li><b>۰</b>بدون شواهد</li>
+          <li><b>۰</b>عدم شواهد</li>
           <li><b>۲۵</b>محدود</li>
-          <li><b>۵۰</b>مشهود</li>
-          <li><b>۷۵</b>روشن</li>
-          <li><b>۱۰۰</b>جامع</li>
+          <li><b>۵۰</b>خوب</li>
+          <li><b>۷۵</b>کامل</li>
+          <li><b>۱۰۰</b>عالی</li>
         </ul>
         <div class="cp-plan" aria-label="نمایش بر اساس پلن">
           <p class="cp-plan__l">امکانات هر پلن را همین‌جا ببینید</p>
@@ -92,9 +92,8 @@
           <span class="cp-progress__bar"><i id="cp-done-bar"></i></span>
 
           <ul class="calc__dims">
-            <li><span>جهت‌گیری</span><b id="cp-d0">۰</b><small>/۲۰۰</small></li>
-            <li><span>اجرا</span><b id="cp-d1">۰</b><small>/۴۰۰</small></li>
-            <li><span>نتایج</span><b id="cp-d2">۰</b><small>/۴۰۰</small></li>
+            <li><span>توانمندسازها</span><b id="cp-d0">۰</b><small>/۵۵۰</small></li>
+            <li><span>نتایج</span><b id="cp-d1">۰</b><small>/۴۵۰</small></li>
           </ul>
 
           <div class="cp-full need-team">
@@ -128,7 +127,8 @@
             <button class="btn btn--lime need-team" type="button" id="cp-print"><svg class="i"><use href="#i-print"/></svg>چاپ یا ذخیرهٔ PDF</button>
             <button class="btn cp-reset" type="button" id="cp-reset"><svg class="i"><use href="#i-reset"/></svg>شروع دوباره</button>
           </div>
-          <p class="calc__fine">این یک خودارزیابی تقریبی است، نه امتیاز رسمی EFQM.</p>
+          <a class="cp-full" href="assessment.html">انجام ارزیابی کامل — ۳۳ زیرمعیار، هر کدام با ۶ ویژگی رادار ←</a>
+          <p class="calc__fine">این یک برآورد تقریبی است، نه امتیاز رسمی جایزه.</p>
         </div>
       </aside>
     </div>
@@ -144,10 +144,12 @@
   <footer class="site-footer">
     <div class="container footer__fine">
       <p>© ۱۴۰۵ اسکورلی</p>
-      <p>EFQM و مدل EFQM علائم تجاری متعلق به EFQM هستند. اسکورلی ابزاری مستقل است و هیچ وابستگی یا تأییدی از سوی EFQM ندارد.</p>
+      <p>محتوای الگو: الگوی تعالی سازمانی ویرایش ۱۴۰۴، سازمان مدیریت صنعتی. اسکورلی ابزاری مستقل است و وابستگی یا تأییدی از سوی این سازمان ندارد.</p>
     </div>
   </footer>
 
+  <script src="../js/models/imi-1404.js"></script>
+  <script src="../js/i18n.js"></script>
   <script src="../js/calc.js"></script>
 </body>
 </html>

@@ -1,35 +1,42 @@
-// EFQM calculator page — fa/calculator.html (Persian) and calculator.html (English).
-// Each criterion is scored on its RADAR attributes (0–100 in steps of 25);
-// the criterion % is their average, then weighted by the criterion's points.
+// Quick score calculator — calculator.html and fa/calculator.html.
+// Built on the 1404 Organizational Excellence Model (js/models/imi-1404.js): the six
+// enabler criteria get one question per RADAR element (Approach, Deployment,
+// Assessment & Refinement) and the five results sub-criteria one per element
+// (Relevance & Usability, Performance) — 28 questions. Answers are 0/25/50/75/100;
+// a card's % is their average, weighted by the model's points (550 enablers + 450 results).
+// For the full scoring (33 items × 6 attributes, caps, rounding) see assessment.html.
 // The plan switch (Starter / Team / Enterprise) previews what each plan unlocks:
-//   Starter     total, maturity level, dimension totals
-//   Team        + criterion breakdown, biggest gaps, evidence notes, print / PDF
+//   Starter     total, maturity level, enabler and results totals
+//   Team        + breakdown, biggest gaps, evidence notes, print / PDF
 //   Enterprise  + several units or sites, compared side by side
 (() => {
+  const M = window.IMI_1404;
+  const I18N = window.I18N;
   const FA = document.documentElement.lang === 'fa';
   const num = n => Math.round(n).toLocaleString(FA ? 'fa-IR' : 'en-US');
+  const idLabel = id => I18N.itemId(id);
   const pct = n => FA ? num(n) + '٪' : num(n) + '%';
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
   const ARC = 377;
   const KEY = 'scorely-calc'; // shared by both languages, so switching keeps the answers
   const PLANS = ['starter', 'team', 'enterprise'];
 
+  // question help text per RADAR element; the element names come from the model
   const T = FA ? {
     enabler: [
-      ['رویکرد', 'آیا روشی مشخص، مستدل و هم‌راستا با استراتژی برای این معیار دارید؟'],
-      ['استقرار', 'آیا این روش به‌طور کامل، منظم و در همهٔ بخش‌های مرتبط اجرا می‌شود؟'],
-      ['ارزیابی و پالایش', 'آیا اثربخشی آن را می‌سنجید و بر پایهٔ یادگیری و نوآوری بهبودش می‌دهید؟'],
+      'آیا برای این معیار رویکردهای مناسب با منطق روشن و فرایندهای تعریف‌شده دارید که از جهت‌گیری استراتژیک پشتیبانی کنند و با هم یکپارچه باشند؟',
+      'آیا این رویکردها به‌موقع و اثربخش در همهٔ نواحی مربوط اجرا می‌شوند و توانایی انطباق با تغییرات را دارند؟',
+      'آیا اثربخشی آن‌ها را اندازه‌گیری می‌کنید و از بینش حاصل، بهینه‌کاوی و یادگیری برای بهبود و نوآوری استفاده می‌کنید؟',
     ],
     result: [
-      ['ارتباط و قابلیت استفاده', 'آیا شاخص‌های درست، با داده‌های قابل اعتماد، به‌موقع و با تفکیک کافی دارید؟'],
-      ['عملکرد', 'آیا روند مثبت دارید، به اهدافتان می‌رسید و در مقایسه با دیگران خوب هستید؟'],
+      'آیا مجموعهٔ روشنی از نتایج مرتبط با استراتژی را با داده‌های به‌موقع، قابل اعتماد و به‌خوبی بخش‌بندی‌شده پایش می‌کنید؟',
+      'آیا نتایج کلیدی روند مثبت سه‌ساله دارند، به اهداف می‌رسند، در مقایسه با دیگران وضعیت خوبی دارند و پیشران‌هایشان درک شده است؟',
     ],
-    names: ['هدف، چشم‌انداز و استراتژی', 'فرهنگ سازمانی و رهبری', 'درگیر کردن ذی‌نفعان', 'خلق ارزش پایدار', 'هدایت عملکرد و تحول', 'ادراکات ذی‌نفعان', 'عملکرد استراتژیک و عملیاتی'],
-    dims: ['جهت‌گیری', 'اجرا', 'نتایج'],
-    levels: ['بدون شواهد', 'محدود', 'مشهود', 'روشن', 'جامع'],
+    dims: ['توانمندسازها', 'نتایج'],
+    levels: ['عدم شواهد', 'محدود', 'خوب', 'کامل', 'عالی'],
     bands: ['در آغاز راه', 'در حال توسعه', 'تثبیت‌شده', 'پیشرفته', 'الگو'],
     of: max => `از ${num(max)}`,
-    crit: n => `معیار ${num(n)}`,
+    crit: n => (String(n).includes('-') ? `زیرمعیار ${idLabel(n)}` : `معیار ${num(n)}`),
     pts: n => `${num(n)} امتیاز`,
     confirm: 'همهٔ پاسخ‌ها و یادداشت‌های این واحد پاک شود؟',
     addNote: '+ یادداشت شواهد',
@@ -40,27 +47,25 @@
     rename: 'نام تازهٔ این واحد:',
     delUnit: n => `«${n}» و همهٔ پاسخ‌هایش حذف شود؟`,
     planDesc: {
-      starter: 'پلن پایه: امتیاز کل، سطح بلوغ و امتیاز سه بُعد.',
+      starter: 'پلن پایه: امتیاز کل، سطح بلوغ و امتیاز توانمندسازها و نتایج.',
       team: 'پلن تیمی: به‌علاوهٔ تفکیک هر معیار، بیشترین فرصت‌های بهبود، یادداشت شواهد برای هر پرسش و خروجی PDF.',
       enterprise: 'پلن سازمانی: به‌علاوهٔ ارزیابی جداگانهٔ چند واحد یا سایت و مقایسهٔ آن‌ها کنار هم.',
     },
   } : {
     enabler: [
-      ['Approach', 'Do you have a clear, sound approach for this criterion that is aligned with your strategy?'],
-      ['Deployment', 'Is it implemented fully, systematically and in every relevant part of the organisation?'],
-      ['Assessment & refinement', 'Do you measure how well it works and improve it through learning and innovation?'],
+      'Do you have sound approaches for this criterion, with a clear rationale and defined processes, that support the strategy and fit with each other?',
+      'Are these approaches implemented on time and effectively in every relevant area, and can they adapt to change?',
+      'Do you measure how well they work, and use the insight, benchmarking and learning to improve and innovate?',
     ],
     result: [
-      ['Relevance & usability', 'Do you have the right indicators, with reliable, timely and well-segmented data?'],
-      ['Performance', 'Are your trends positive, are targets met, and do you compare well with others?'],
+      'Do you track a clear set of results tied to your strategy, with timely, reliable and well-segmented data?',
+      'Do the key results show positive 3-year trends, meet their targets, compare well with others, and are their drivers understood?',
     ],
-    names: ['Purpose, vision & strategy', 'Organisational culture & leadership', 'Engaging stakeholders', 'Creating sustainable value', 'Driving performance & transformation', 'Stakeholder perceptions', 'Strategic & operational performance'],
-    dims: ['Direction', 'Execution', 'Results'],
-    levels: ['No evidence', 'Limited', 'Evident', 'Clear', 'Comprehensive'],
-    short: { 4: 'Full' }, // phones: the long word doesn't fit a fifth of the width
+    dims: ['Enablers', 'Results'],
+    levels: ['No evidence', 'Limited', 'Good', 'Complete', 'Excellent'],
     bands: ['Getting started', 'Developing', 'Established', 'Advanced', 'Role model'],
     of: max => `of ${num(max)}`,
-    crit: n => `Criterion ${n}`,
+    crit: n => (String(n).includes('-') ? `Sub-criterion ${n}` : `Criterion ${n}`),
     pts: n => `${num(n)} pts`,
     confirm: 'Clear all answers and notes for this unit?',
     addNote: '+ Add evidence note',
@@ -71,21 +76,17 @@
     rename: 'New name for this unit:',
     delUnit: n => `Delete "${n}" and all its answers?`,
     planDesc: {
-      starter: 'Starter: your total score, maturity level and the three dimension totals.',
+      starter: 'Starter: your total score, maturity level and the enabler and results totals.',
       team: 'Team: adds the breakdown by criterion, your biggest gaps, an evidence note on every question, and print / PDF.',
       enterprise: 'Enterprise: adds separate assessments for several units or sites, compared side by side.',
     },
   };
 
-  const CRITERIA = [
-    { n: 1, dim: 0, pts: 100, q: T.enabler },
-    { n: 2, dim: 0, pts: 100, q: T.enabler },
-    { n: 3, dim: 1, pts: 100, q: T.enabler },
-    { n: 4, dim: 1, pts: 200, q: T.enabler },
-    { n: 5, dim: 1, pts: 100, q: T.enabler },
-    { n: 6, dim: 2, pts: 200, q: T.result },
-    { n: 7, dim: 2, pts: 200, q: T.result },
-  ].map((c, i) => ({ ...c, name: T.names[i] }));
+  // one card per enabler criterion and per results sub-criterion, weighted from the model
+  const questions = kind => M.radar[kind].elements.map((e, k) => [I18N.t(e.name), T[kind][k]]);
+  const CRITERIA = M.criteria.flatMap(c => (c.kind === 'enabler'
+    ? [{ n: c.id, dim: 0, pts: c.weight, q: questions('enabler'), name: I18N.t(c.name) }]
+    : c.subs.map(s => ({ n: s.id, dim: 1, pts: s.weight, q: questions('result'), name: I18N.t(s.name) }))));
   const LEVELS = [0, 25, 50, 75, 100];
   const BANDS = [0, 250, 400, 550, 700];
   const TOTAL_Q = CRITERIA.reduce((a, c) => a + c.q.length, 0);
@@ -94,8 +95,12 @@
   const load = () => {
     let s = null;
     try { s = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) { /* start fresh */ }
-    if (!s || s.v !== 2) { // first visit, or answers saved by the earlier one-unit version
-      s = { v: 2, plan: 'team', cur: 0, units: [{ name: '', a: s && typeof s === 'object' ? s : {}, n: {} }] };
+    // v3 = the 1404 model. Answers saved for the earlier EFQM 2025 questions (v1, v2) don't
+    // map onto it, so they start empty; the plan and the unit names are kept.
+    if (!s || s.v !== 3) {
+      const old = s && s.v === 2 && Array.isArray(s.units) ? s : null;
+      s = { v: 3, plan: old?.plan || 'team', cur: 0,
+        units: old?.units.length ? old.units.map(u => ({ name: u.name || '', a: {}, n: {} })) : [{ name: '', a: {}, n: {} }] };
     }
     const fromUrl = new URLSearchParams(location.search).get('plan');
     if (PLANS.includes(fromUrl)) s.plan = fromUrl;
@@ -110,7 +115,7 @@
 
   const scoreOf = a => {
     let sum = 0, done = 0;
-    const dims = [0, 0, 0];
+    const dims = [0, 0];
     const rows = CRITERIA.map(c => {
       const vals = c.q.map((_, qi) => {
         const v = a[`c${c.n}q${qi}`];
@@ -131,7 +136,7 @@
   CRITERIA.forEach((c, ci) => {
     if (ci === 0 || CRITERIA[ci - 1].dim !== c.dim) html += `<p class="cp-dim">${T.dims[c.dim]}</p>`;
     html += `<fieldset class="cp-card" id="c${c.n}">
-      <legend class="cp-card__head"><span class="cp-card__n">${num(c.n)}</span><span class="cp-card__name">${c.name}</span><span class="cp-card__pts"><b data-pts="${ci}">${num(0)}</b> ${T.of(c.pts)}</span></legend>`;
+      <legend class="cp-card__head"><span class="cp-card__n">${idLabel(c.n)}</span><span class="cp-card__name">${c.name}</span><span class="cp-card__pts"><b data-pts="${ci}">${num(0)}</b> ${T.of(c.pts)}</span></legend>`;
     c.q.forEach(([label, help], qi) => {
       const name = `c${c.n}q${qi}`;
       const lv = li => T.short && T.short[li] ? `<i class="lv">${T.levels[li]}</i><i class="lv-s">${T.short[li]}</i>` : T.levels[li];
@@ -146,7 +151,7 @@
   form.innerHTML = html;
 
   const $ = id => document.getElementById(id);
-  $('cp-crit').innerHTML = CRITERIA.map(c => `<li><span class="cp-crit__n">${num(c.n)}</span><span class="cp-crit__t"><i></i></span><b>${pct(0)}</b></li>`).join('');
+  $('cp-crit').innerHTML = CRITERIA.map(c => `<li title="${esc(c.name)}"><span class="cp-crit__n">${idLabel(c.n)}</span><span class="cp-crit__t"><i></i></span><b>${pct(0)}</b></li>`).join('');
   $('cp-count').textContent = num(TOTAL_Q);
 
   const showNote = (ta, open) => {
