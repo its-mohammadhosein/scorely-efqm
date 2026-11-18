@@ -43,7 +43,7 @@
 
   // Shape check used on load and on import; throws with a reason people can read.
   function validate(s) {
-    if (!s || typeof s !== 'object') throw new Error('not a Scorely file');
+    if (!s || typeof s !== 'object') throw new Error('not a Saramadan file');
     if (s.v !== V) throw new Error(`unsupported version ${s.v}`);
     if (!Array.isArray(s.assessments) || !s.assessments.length) throw new Error('no assessments');
     for (const a of s.assessments) {

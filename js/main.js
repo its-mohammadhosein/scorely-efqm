@@ -1,4 +1,4 @@
-// Scorely landing — reveals, dashboard gauge and the score calculator.
+// Saramadan landing — reveals, dashboard gauge and the score calculator.
 (() => {
   document.documentElement.classList.add('js');
   const ARC = 377; // length of the 270° gauge arc (r = 80)

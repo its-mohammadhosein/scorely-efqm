@@ -18,7 +18,7 @@
   const signed = n => (n > 0 ? '+' : n < 0 ? '−' : '±') + pts(Math.abs(n));
   const ARC = 377;
 
-  // Scorely's own maturity levels (the model defines none) — same as the calculator.
+  // Saramadan's own maturity levels (the model defines none) — same as the calculator.
   const LEVELS = [0, 250, 400, 550, 700];
   const LEVEL_NAMES = FA
     ? ['در آغاز راه', 'در حال توسعه', 'تثبیت‌شده', 'پیشرفته', 'الگو']
@@ -54,7 +54,7 @@
             <div class="gauge__num"><strong>${pts(Math.round(res.total))}</strong><span>${L(`of ${num(M.totals.max)}`, `از ${num(M.totals.max)}`)}</span></div>
           </div>
           <p class="calc__band">${level(res.total)}</p>
-          <p class="rp-score__fine">${L('Maturity level as defined by Scorely, not by the model.', 'سطح بلوغ بر اساس تعریف اسکورلی است، نه الگو.')}</p>
+          <p class="rp-score__fine">${L('Maturity level as defined by Saramadan, not by the model.', 'سطح بلوغ بر اساس تعریف سرآمدان است، نه الگو.')}</p>
         </div>
         <div class="rp-kinds">
           ${['enabler', 'result'].map(k => `
