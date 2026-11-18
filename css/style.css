@@ -316,9 +316,15 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .bento { display: grid; gap: 14px; }
 @media (min-width: 700px) { .bento { grid-template-columns: repeat(2, 1fr); } .tile--wide { grid-column: 1 / -1; } }
 @media (min-width: 1080px) { .bento { grid-template-columns: repeat(3, 1fr); } .tile--wide { grid-column: span 2; } .tile--dark { grid-column: 1 / -1; grid-template-columns: 1fr auto; column-gap: 40px; } .tile--dark > :not(.langs) { grid-column: 1; } .tile--dark .langs { grid-column: 2; grid-row: 1 / 4; align-self: end; } }
-.tile { position: relative; display: grid; align-content: start; gap: 10px; min-height: 240px; padding: clamp(22px, 3vw, 30px); border-radius: var(--radius); background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); overflow: hidden; transition: transform .3s var(--ease); }
-.tile:hover { transform: translateY(-4px); }
-.tile__i { width: 40px; height: 40px; padding: 9px; margin-bottom: 26px; border-radius: 12px; background: var(--green-soft); color: var(--green); }
+.tile { position: relative; display: grid; align-content: start; gap: 10px; min-height: 240px; padding: clamp(22px, 3vw, 30px); border-radius: var(--radius); background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); overflow: hidden; transition: translate .35s var(--ease), box-shadow .35s ease; }
+.tile__i { width: 40px; height: 40px; padding: 9px; margin-bottom: 26px; border-radius: 12px; background: var(--green-soft); color: var(--green); transition: transform .35s var(--ease), background-color .25s ease, color .25s ease; }
+/* hover uses `translate`, not `transform`, so the reveal's `transform: none` can't cancel it */
+@media (hover: hover) {
+  .tile:hover { translate: 0 -6px; box-shadow: inset 0 0 0 1px var(--line), 0 24px 48px -28px rgb(20 40 30 / .45); }
+  .tile:hover .tile__i { transform: scale(1.08) rotate(-6deg); background: var(--green); color: #fff; }
+  .tile--green:hover, .tile--dark:hover { box-shadow: 0 24px 48px -24px rgb(20 40 30 / .6); }
+  .tile--green:hover .tile__i, .tile--dark:hover .tile__i { background: var(--lime); color: var(--ink); }
+}
 .tile h3 { font-size: 1.3rem; font-weight: 500; letter-spacing: -0.025em; }
 .tile p { max-width: 34rem; font-size: 0.95rem; color: var(--muted); }
 .tile--green { background: var(--green); color: #fff; box-shadow: none; }
@@ -410,14 +416,21 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .js .hero .reveal:nth-child(3) { transition-delay: .16s; }
 .js .hero .reveal:nth-child(4) { transition-delay: .24s; }
 .js .hero .reveal:nth-child(5) { transition-delay: .3s; }
-.js .steps .reveal:nth-child(2), .js .bento .reveal:nth-child(2), .js .prices .reveal:nth-child(2) { transition-delay: .08s; }
-.js .steps .reveal:nth-child(3), .js .bento .reveal:nth-child(3), .js .prices .reveal:nth-child(3) { transition-delay: .16s; }
-.js .steps .reveal:nth-child(4), .js .bento .reveal:nth-child(4) { transition-delay: .24s; }
+.js .steps .reveal:nth-child(2), .js .prices .reveal:nth-child(2) { transition-delay: .08s; }
+.js .steps .reveal:nth-child(3), .js .prices .reveal:nth-child(3) { transition-delay: .16s; }
+.js .steps .reveal:nth-child(4) { transition-delay: .24s; }
+/* bento tiles: the stagger delays only the reveal, so hover responds at once */
+.js .bento .tile { transition-property: opacity, transform, translate, box-shadow; transition-duration: .9s, .9s, .35s, .35s; transition-timing-function: var(--ease), var(--ease), var(--ease), ease; }
+.js .bento .reveal:nth-child(2) { transition-delay: .08s, .08s, 0s, 0s; }
+.js .bento .reveal:nth-child(3) { transition-delay: .16s, .16s, 0s, 0s; }
+.js .bento .reveal:nth-child(4) { transition-delay: .24s, .24s, 0s, 0s; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: 0s !important; transition-delay: 0s !important; }
   .js .reveal { opacity: 1; transform: none; }
+  .tile:hover { translate: none; }
+  .tile:hover .tile__i { transform: none; }
 }
 
 /* ---------- Phones ---------- */
