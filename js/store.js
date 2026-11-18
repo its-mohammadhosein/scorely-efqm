@@ -121,7 +121,7 @@
       const a = Store.current();
       const day = new Date().toISOString().slice(0, 10);
       const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
-      const link = Object.assign(document.createElement('a'), { href: URL.createObjectURL(blob), download: `scorely-${a.year}-${day}.json` });
+      const link = Object.assign(document.createElement('a'), { href: URL.createObjectURL(blob), download: `saramadan-${a.year}-${day}.json` });
       document.body.appendChild(link); link.click(); link.remove();
       setTimeout(() => URL.revokeObjectURL(link.href), 1000);
     },
