@@ -647,7 +647,6 @@
       </ul>
       <div class="yc-hero__btns">
         <button type="button" class="btn btn--green" data-act="new">${ICON.plus}${L('Create an indicator', 'ساخت شاخص')}</button>
-        <a class="btn btn--ghost" href="../company-x.html">${L('See the Company X example', 'دیدن نمونهٔ شرکت ایکس')}</a>
       </div>
       <p class="yc-hero__fine">${L('Preview: everything is saved in this browser only, and goes into your Saramadan backup file.', 'پیش‌نمایش: همه‌چیز فقط در همین مرورگر ذخیره می‌شود و در فایل پشتیبان سرآمدان شما قرار می‌گیرد.')}</p>
     </div></section>`;
