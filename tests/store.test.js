@@ -50,6 +50,25 @@ test('unreadable or old data is set aside, not lost', () => {
   assert.match(storage.data['scorely-app-backup'], /"v":2/);
 });
 
+test('organization inputs and indicators: empty on first visit, filled in for older saves', () => {
+  let Store = loadStore(memoryStorage());
+  assert.deepEqual([Store.state.inputs, Store.state.values, Store.state.indicators], [[], {}, []]);
+
+  // a v3 save from before the Your company page had none of these
+  const old = loadStore(memoryStorage()).state;
+  delete old.inputs; delete old.values; delete old.indicators;
+  const storage = memoryStorage({ 'scorely-app': JSON.stringify(old) });
+  Store = loadStore(storage);
+  assert.equal(Store.notice, null);
+  assert.deepEqual([Store.state.inputs, Store.state.values, Store.state.indicators], [[], {}, []]);
+
+  Store.state.inputs.push({ id: 'in_1', name: 'Leavers', unit: 'people' });
+  Store.state.values.in_1 = { 1404: 8 };
+  Store.save();
+  Store = loadStore(storage);
+  assert.equal(Store.state.values.in_1[1404], 8);
+});
+
 test('sites and assessments: add, switch, delete', () => {
   const Store = loadStore(memoryStorage());
   const first = Store.current().curSite;

@@ -1,1 +1,10 @@
 references/
+
+# Company X: the example organization and its source workbook notes (kept local)
+company-x.html
+fa/company-x.html
+css/company-x.css
+js/company-x.js
+
+# Planning documents and source notes (kept local)
+docs/

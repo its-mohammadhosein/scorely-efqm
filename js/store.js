@@ -5,7 +5,14 @@
 //
 // State (v3):
 // { v, plan, cur, assessments: [{ id, model, year, name, curSite, sites: [{ id, name }],
-//     data: { [siteId]: { scores, guidance, notes, indicators } } }] }
+//     data: { [siteId]: { scores, guidance, notes, indicators } } }],
+//   inputs, values, indicators }
+// The last three belong to the organization, not to one assessment (Your company page):
+//   inputs: [{ id, name, unit }]                       raw data items, entered once
+//   values: { [inputId]: { [year]: number } }
+//   indicators: [{ id, name, unit, higher, kind, part, formula, method, origin,
+//                  targets: { [year]: { value, setAt } }, comparator: { label, values: { [year]: number } } | null }]
+// They are optional, so older saves and export files still load.
 (function (root) {
   const KEY = 'scorely-app';
   const V = 3;
@@ -30,7 +37,7 @@
   };
   const fresh = () => {
     const a = newAssessment();
-    return { v: V, plan: 'team', cur: a.id, assessments: [a] };
+    return { v: V, plan: 'team', cur: a.id, assessments: [a], inputs: [], values: {}, indicators: [] };
   };
 
   let blocked = false;
@@ -57,6 +64,9 @@
     }
     if (!s.assessments.some(a => a.id === s.cur)) s.cur = s.assessments[0].id;
     if (!PLANS.includes(s.plan)) s.plan = 'team';
+    if (!Array.isArray(s.inputs)) s.inputs = [];
+    if (!Array.isArray(s.indicators)) s.indicators = [];
+    if (!s.values || typeof s.values !== 'object') s.values = {};
     return s;
   }
 
@@ -115,6 +125,8 @@
     },
 
     setPlan(p) { if (PLANS.includes(p)) { state.plan = p; Store.save(); } },
+    thisYear,
+    uid,
 
     // backup
     exportJSON() {
